@@ -4,7 +4,11 @@
 '''
 
 def locate_card(cards,query):
-    pass
+    for pos,elem in enumerate(cards):
+        if elem==query:
+            return pos
+
+
 
 
 
