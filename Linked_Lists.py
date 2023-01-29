@@ -48,6 +48,19 @@ class LinkedList:
                 return
             pointer=pointer.next
 
+    def delete_at_start(self):
+        self.head=self.head.next
+
+    def delete_at_end(self):
+        if self.head.next is None:
+            self.head=None
+            return
+        pointer=self.head
+        while pointer.next.next:
+            pointer=pointer.next
+        pointer.next=None
+
+
 
     def printlist(self):
         pointer=self.head
@@ -56,7 +69,7 @@ class LinkedList:
             pointer=pointer.next
         print('')
 ll=LinkedList()
-ll.insert_from_list([1,2,3,4,5,6,7,8])
+ll.insert_from_list([1])
 ll.printlist()
-ll.insert_after_node(4,99)
+ll.delete_at_end()
 ll.printlist()
