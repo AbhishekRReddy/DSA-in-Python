@@ -1,98 +1,62 @@
 '''
-Implementation of Linekd list using the python.
+Linked Lists implementation using the python
 
-1.We will class for the Element.
-2.We will have seprate class for the Linked List
 '''
+#Function to initiate the Node class
 class Node:
-    def __init__(self,data=None,next=None):
+    def __init__(self,data,next=None):
         self.data=data
         self.next=next
 
 class LinkedList:
     def __init__(self):
         self.head=None
-    
-    def insert_at_beginning(self,data):
+
+    #Inserting the element at the beginning
+    def insert_at_start(self,data):
         node=Node(data,self.head)
         self.head=node
 
-    def print(self):
-        if self.head is None:
-            print('Linked List is Empty')
-            return
+    #Append the List from the beginning of the Linked Lists 
+    #Pass the order as True in case the elements have to be ordered in the same order.
+    def insert_from_list(self,elements,order=True):
+        if order:
+            for element in reversed(elements):
+                self.insert_at_start(element)
         else:
-            itr=self.head
-            llstr=''
-            while itr:
-                llstr+=str(itr.data)+'-->'
-                itr=itr.next
-            print(llstr)
+            for element in elements:
+                self.insert_at_start(element)
+
     def insert_at_end(self,data):
+        #Check if the Linked List is empty
         if self.head is None:
-            self.head=Node(data,None)
-            return None
-        else:
-            itr=self.head
-            while itr.next:
-                itr=itr.next    
-            itr.next=Node(data,None) 
-    def insert_values(self,data_list):
-        self.head=None
-        for data in data_list:
-            self.insert_at_end(data)
-    def get_length(self):
-        itr=self.head
-        counter=0
-        while itr:
-            counter+=1
-            itr=itr.next
-        return counter
-    def remove(self,position):
-        if position<0 or position>=self.get_length():
-            raise Exception("Invalid Index")
-        pointer=self.head
-        if(position==0):
-            self.head=pointer.next
+            self.insert_at_start(data)
             return
-        counter=0
-        while pointer:
-            if(counter==position-1):
-                pointer.next=pointer.next.next
-                break
-            counter+=1
+        pointer=self.head
+        while pointer.next:
             pointer=pointer.next
-     
-    def insert_at(self,position,data):
-        if position<0 or position>=self.get_length():
-            raise Exception("Invalid Index")
-        if position==0:
-            self.insert_at_beginning(data)
-            
-        else:
-            pointer=self.head
-            counter=0
-            while pointer:
-                if(counter==position-1):
-                    node=Node(data,pointer.next)
-                    pointer.next=node
-                    break
-                counter+=1
-                pointer=pointer.next
+        pointer.next=Node(data)
 
-'''
------------------------------------------------------------------------------------------------------------------
-''' 
+    #Function to insert the element after sepcific node value
+    #The data in the existing node is given
+    def insert_after_node(self,existing_value,data):
+        pointer=self.head
+        while pointer:
+            if(pointer.data==existing_value):
+                node=Node(data,pointer.next)
+                pointer.next=node
+                return
+            pointer=pointer.next
 
+
+    def printlist(self):
+        pointer=self.head
+        while(pointer):
+            print(str(pointer.data)+"-->",end="")
+            pointer=pointer.next
+        print('')
 ll=LinkedList()
-ll.insert_at_beginning(5)
-ll.insert_at_beginning(6)
-ll.insert_at_beginning(7)
-ll.insert_at_end(10)
-ll.insert_values([1,3,4,5,6,8,9,6,7])
-
-ll.print()
-ll.insert_at(2,777)
-ll.print()
-
-
+ll.insert_from_list([1,2,3,4,5,6,7,8])
+ll.printlist()
+ll.insert_after_node(4,99)
+ll.printlist()
