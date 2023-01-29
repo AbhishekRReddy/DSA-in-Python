@@ -67,15 +67,15 @@ class LinkedList:
         if position<0 or position>=self.get_length():
             raise Exception("Invalid Index")
         if position==0:
-            temp=self.head
-            self.head=Node(data,temp)
+            self.insert_at_beginning(data)
+            
         else:
             pointer=self.head
             counter=0
             while pointer:
                 if(counter==position-1):
-                    temp=pointer.next
-                    pointer.next=Node(data,temp)
+                    node=Node(data,pointer.next)
+                    pointer.next=node
                     break
                 counter+=1
                 pointer=pointer.next
