@@ -60,14 +60,13 @@ class LinkedList:
             pointer=pointer.next
         pointer.next=None
 
-
-
     def printlist(self):
         pointer=self.head
         while(pointer):
             print(str(pointer.data)+"-->",end="")
             pointer=pointer.next
         print('')
+
 ll=LinkedList()
 ll.insert_from_list([1])
 ll.printlist()
