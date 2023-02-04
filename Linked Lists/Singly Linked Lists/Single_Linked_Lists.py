@@ -35,7 +35,17 @@ class LinkedLists:
                     counter+=1
                     pointer=pointer.next
 
-        
+    def traverse(self):
+        if self.head is None:
+            print('No elements are found in Linked Lists')
+
+        else:
+            node=self.head
+            while node:
+                print(node.value)
+                node=node.next
+
+
 
 
 class Node:
@@ -51,3 +61,4 @@ ll.insertion(6,0)
 
 ll.insertion(99,-1)
 print([node.value for node in ll])
+ll.traverse()
