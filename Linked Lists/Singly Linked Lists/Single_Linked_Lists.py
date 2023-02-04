@@ -9,6 +9,12 @@ class LinkedLists:
             yield node
             node=node.next
 
+    def create_SLL(self,value):
+        node=Node(value)
+        self.head=node
+        self.tail=node
+
+
     def insertion(self,value,location):
         new_node=Node(value)
         if self.head is None:
@@ -106,8 +112,9 @@ class Node:
         self.next=None
 
     
-node=Node(1)
-ll=LinkedLists(node)
+
+ll=LinkedLists()
+ll.create_SLL(1)
 
 
 
