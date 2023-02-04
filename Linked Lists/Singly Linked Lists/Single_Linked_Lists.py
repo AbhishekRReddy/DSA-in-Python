@@ -92,6 +92,12 @@ class LinkedLists:
                 return print('Invalid location is given')
 
 
+    def delete_all(self):
+        if self.head is None:
+            print('Linked List does not exist')
+        else:
+            self.head=None
+            self.tail=None
 
 
 class Node:
@@ -106,5 +112,5 @@ ll=LinkedLists(node)
 
 
 print([node.value for node in ll])
-ll.delete(-1)
+ll.delete_all()
 print([node.value for node in ll])
