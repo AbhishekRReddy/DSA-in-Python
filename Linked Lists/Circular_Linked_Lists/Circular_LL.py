@@ -6,6 +6,7 @@ class Circular_Linked_List:
     def __init__(self,node=None):
         self.head=node
         self.tail=node
+        self.length=0
     
     def __iter__(self):
         node=self.head
@@ -20,8 +21,52 @@ class Circular_Linked_List:
         node.next=node
         self.head=node
         self.tail=node
+        self.length=1
         return 'CircularSLL is created'
+
+    def insertion(self,value,location):
+        if(location>=self.length):
+            print('Invalid Location given')
+            return
+
+        if self.head is None:
+            print('The Linked List does not exist')
+        
+        else:
+            new_node=Node(value)
+            if location==0:
+                new_node.next=self.head
+                self.tail.next=new_node
+                self.head=new_node
+                self.length+=1
+                return
+            elif location==-1:
+                new_node.next=self.head
+                self.tail.next=new_node
+                self.tail=new_node
+                self.length+=1
+                return
+            else:
+                index=0
+                pointer=self.head
+                while pointer:
+                    if(index==location-1):
+                        new_node.next=pointer.next
+                        pointer.next=new_node
+                        self.length+=1
+                        return
+                    index+=1
+                    pointer=pointer.next
+                    if(pointer==self.head):
+                        print('Invalid location is given')
+                        break
+            
 
 csll=Circular_Linked_List()
 csll.createSCLL(1)
+
+
+csll.insertion(101,0)
+csll.insertion(14,1)
+csll.insertion(45,0)
 print([node.value for node in csll])
