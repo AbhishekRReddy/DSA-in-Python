@@ -45,7 +45,18 @@ class LinkedLists:
                 print(node.value)
                 node=node.next
 
-
+    def search(self,nodeValue):
+        if self.head is None:
+            return 'Linked List does not Exist'
+        else:
+            node=self.head
+            index=0
+            while node:
+                if(node.value==nodeValue):
+                    return f'{node.value} found at index position of {index}'
+                node=node.next
+                index+=1
+            return f'{node.value} is not present in the Linked List'
 
 
 class Node:
@@ -61,4 +72,4 @@ ll.insertion(6,0)
 
 ll.insertion(99,-1)
 print([node.value for node in ll])
-ll.traverse()
+print(ll.search(99))
