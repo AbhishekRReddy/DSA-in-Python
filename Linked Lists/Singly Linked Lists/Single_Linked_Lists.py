@@ -1,7 +1,7 @@
 class LinkedLists:
     def __init__(self,node=None):
         self.head=node
-        self.tail=None
+        self.tail=node
 
     def __iter__(self):
         node=self.head
@@ -58,6 +58,41 @@ class LinkedLists:
                 index+=1
             return f'{node.value} is not present in the Linked List'
 
+    def delete(self,location):
+        if self.head is None:
+            return print('Linked List does not exist')
+        else:
+            pointer=self.head
+            if location==0:
+                if self.head==self.tail:
+                    self.head=None
+                    self.tail=None
+                    return
+                else:
+                    self.head=self.head.next
+                    return
+            elif location==-1:
+                if self.head==self.tail:
+                    self.head=None
+                    self.tail=None
+                    return
+                else:
+                    while pointer.next.next:
+                        pointer=pointer.next
+                    pointer.next=None
+                    self.tail=pointer
+                    return
+                
+            else:
+                index=0
+                while pointer.next:
+                    if(index==location-1):
+                        pointer.next=pointer.next.next
+                        return
+                return print('Invalid location is given')
+
+
+
 
 class Node:
     def __init__(self,value=None):
@@ -65,11 +100,11 @@ class Node:
         self.next=None
 
     
+node=Node(1)
+ll=LinkedLists(node)
 
-ll=LinkedLists()
-ll.insertion(5,0)
-ll.insertion(6,0)
 
-ll.insertion(99,-1)
+
 print([node.value for node in ll])
-print(ll.search(99))
+ll.delete(-1)
+print([node.value for node in ll])
