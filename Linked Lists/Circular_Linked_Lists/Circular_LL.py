@@ -60,13 +60,22 @@ class Circular_Linked_List:
                     if(pointer==self.head):
                         print('Invalid location is given')
                         break
-            
+    def traverse(self):
+        if self.head is None:
+            print('Linked List does not exists')
+        else:
+            pointer=self.head
+            while pointer:
+                print(pointer.value)
+                if(pointer.next==self.head):
+                    break
+                pointer=pointer.next
 
 csll=Circular_Linked_List()
 csll.createSCLL(1)
-
 
 csll.insertion(101,0)
 csll.insertion(14,1)
 csll.insertion(45,0)
 print([node.value for node in csll])
+csll.traverse()

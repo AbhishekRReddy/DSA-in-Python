@@ -115,9 +115,11 @@ class Node:
 
 ll=LinkedLists()
 ll.create_SLL(1)
+ll.insertion(1,25)
+ll.insertion(1,14)
+ll.insertion(99,-1)
 
 
 
 print([node.value for node in ll])
-ll.delete_all()
-print([node.value for node in ll])
+
