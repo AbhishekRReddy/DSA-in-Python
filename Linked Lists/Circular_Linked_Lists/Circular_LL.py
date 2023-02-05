@@ -70,6 +70,19 @@ class Circular_Linked_List:
                 if(pointer.next==self.head):
                     break
                 pointer=pointer.next
+    def search(self,search_value):
+        pointer=self.head
+        counter=0
+        while pointer:
+            if(pointer.value==search_value):
+                print(f'{search_value} found at location {counter}')
+                return
+            if(pointer==self.tail):
+                print('Value not found and you have reached end of the CSLL')
+                return
+            pointer=pointer.next
+            counter+=1
+
 
 csll=Circular_Linked_List()
 csll.createSCLL(1)
@@ -78,4 +91,5 @@ csll.insertion(101,0)
 csll.insertion(14,1)
 csll.insertion(45,0)
 print([node.value for node in csll])
-csll.traverse()
+
+csll.search(14)
