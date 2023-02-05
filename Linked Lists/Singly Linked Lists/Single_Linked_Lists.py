@@ -34,7 +34,7 @@ class LinkedLists:
                 counter=0
                 pointer=self.head
                 while pointer.next:
-                    if(counter==location):
+                    if(counter==location-1):
                         new_node.next=pointer.next
                         pointer.next=new_node
                         return 
@@ -115,9 +115,9 @@ class Node:
 
 ll=LinkedLists()
 ll.create_SLL(1)
-ll.insertion(1,25)
-ll.insertion(1,14)
-ll.insertion(99,-1)
+ll.insertion(2,-1)
+ll.insertion(3,-1)
+ll.insertion(99,1)
 
 
 
