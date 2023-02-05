@@ -133,7 +133,11 @@ class Circular_Linked_List:
                     if(pointer==self.head):
                         print('Invalid location is given')
                         break
-                    
+    
+    def delete_all(self):
+        self.head=None
+        self.tail.next=None
+        self.tail=None
                 
 
  
@@ -144,5 +148,5 @@ csll.insertion(101,0)
 csll.insertion(14,1)
 csll.insertion(45,0)
 print([node.value for node in csll])
-csll.deletion(4)
-print([node.value for node in csll])
+csll.delete_all()
+csll.traverse()
