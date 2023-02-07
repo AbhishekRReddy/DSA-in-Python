@@ -130,6 +130,17 @@ class DLL:
             self.length -= 1    
             return
 
+    def delete_all(self):
+        if self.head is None:
+            print('The linked list does not exist')
+            return
+        pointer = self.head
+        while pointer:
+            pointer.next = None
+        self.head = None
+        self.tail = None
+        return
+
 dll=DLL()
 dll.create_DLL(0)
 dll.insertion(1,-1)
