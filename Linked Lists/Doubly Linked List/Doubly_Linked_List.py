@@ -92,6 +92,47 @@ class DLL:
                 counter += 1
             print(f'{value} does not exist in the Linked List')
 
+    def deletion(self,location):
+        if location >= self.length:
+            print('Invalid location is given')
+            return
+        if location == 0:
+            if(self.head == self.tail):
+                self.head = None
+                self.tail = None
+                self.length -= 1
+                return
+            else:
+                self.head = self.head.next
+                self.head.prev.next=None
+                self.head.prev=None
+                self.length -= 1
+                return
+        elif location == -1:
+            if(self.head == self.tail):
+                self.head = None
+                self.tail = None
+                self.length -= 1
+                return
+            
+            else:
+                self.tail = self.tail.prev
+                self.tail.next.prev = None
+                self.tail.next = None
+                self.length -= 1
+                return
+        else:
+            pointer = self.head
+            counter = 0
+            while counter < location-1:
+                pointer = pointer.next
+                counter += 1
+            pointer.next.prev = None
+            pointer.next = pointer.next.next
+            pointer.next.prev.next = None
+            pointer.next.prev = pointer
+            self.length -= 1    
+            return
 
 dll=DLL()
 dll.create_DLL(0)
@@ -100,11 +141,19 @@ dll.insertion(2,-1)
 dll.insertion(3,-1)
 dll.insertion(4,-1)
 dll.insertion(-1,0)
-print([node.value for node in dll])
-print(dll.length)
-dll.insertion(7,5)
 
+
+dll.insertion(7,5)
+print(dll.length)
 print([node.value for node in dll])
-dll.find_value(78)
+dll.deletion(7)
+print([node.value for node in dll])
+print('---------------------------------')
+dll.traverse()
+print('----------------------------------')
+print([node.value for node in dll])
+dll.reverse_traverse()
+print('----------------------')
+print(dll.length)
 
 
