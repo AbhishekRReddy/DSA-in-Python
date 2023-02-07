@@ -77,7 +77,21 @@ class DLL:
                 print(pointer.value)
                 pointer = pointer.prev
         
-        
+    def find_value(self,value):
+        if self.head is None:
+            print('Linked list does not exist')
+            return
+        else:
+            counter=0
+            pointer = self.head
+            while pointer:
+                if(pointer.value==value):
+                    print(f'{value} found at location {counter}')
+                    return
+                pointer = pointer.next
+                counter += 1
+            print(f'{value} does not exist in the Linked List')
+
 
 dll=DLL()
 dll.create_DLL(0)
@@ -91,6 +105,6 @@ print(dll.length)
 dll.insertion(7,5)
 
 print([node.value for node in dll])
-dll.reverse_traverse()
+dll.find_value(78)
 
 
