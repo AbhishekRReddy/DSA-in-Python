@@ -57,8 +57,28 @@ class DLL:
                 pointer.next=new_node
                 self.length+=1
                 return 
-                 
-    
+
+    def traverse(self):
+        if self.head is None:
+            print('Linked List does not exists')
+            return
+        else:
+            pointer = self.head
+            while pointer:
+                print(pointer.value)
+                pointer = pointer.next
+           
+    def reverse_traverse(self):
+        if self.head is None:
+            print('Linked Lists does not exists')
+        else:
+            pointer=self.tail
+            while pointer:
+                print(pointer.value)
+                pointer = pointer.prev
+        
+        
+
 dll=DLL()
 dll.create_DLL(0)
 dll.insertion(1,-1)
@@ -71,4 +91,6 @@ print(dll.length)
 dll.insertion(7,5)
 
 print([node.value for node in dll])
+dll.reverse_traverse()
+
 
