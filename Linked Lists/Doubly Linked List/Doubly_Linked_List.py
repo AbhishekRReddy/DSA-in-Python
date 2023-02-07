@@ -104,11 +104,10 @@ class DLL:
                 return
             else:
                 self.head = self.head.next
-                self.head.prev.next=None
                 self.head.prev=None
                 self.length -= 1
                 return
-        elif location == -1:
+        elif location == -1 or location == self.length-1:
             if(self.head == self.tail):
                 self.head = None
                 self.tail = None
@@ -117,7 +116,6 @@ class DLL:
             
             else:
                 self.tail = self.tail.prev
-                self.tail.next.prev = None
                 self.tail.next = None
                 self.length -= 1
                 return
@@ -127,9 +125,7 @@ class DLL:
             while counter < location-1:
                 pointer = pointer.next
                 counter += 1
-            pointer.next.prev = None
             pointer.next = pointer.next.next
-            pointer.next.prev.next = None
             pointer.next.prev = pointer
             self.length -= 1    
             return
@@ -146,14 +142,6 @@ dll.insertion(-1,0)
 dll.insertion(7,5)
 print(dll.length)
 print([node.value for node in dll])
-dll.deletion(7)
-print([node.value for node in dll])
-print('---------------------------------')
-dll.traverse()
-print('----------------------------------')
-print([node.value for node in dll])
-dll.reverse_traverse()
-print('----------------------')
-print(dll.length)
 
+dll.deletion(6)
 
