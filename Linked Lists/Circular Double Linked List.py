@@ -62,14 +62,29 @@ class Cdll:
                 pointer.next = newNode
                 self.length += 1
         
-                
+    def traverse(self):
+        if self.head is None:
+            print('Linked list is empty')
+        else:
+            pointer = self.head
+            while pointer:
+                print(pointer.value,end='-->')
+                pointer=pointer.next
+                if(pointer == self.head):
+                    print('To start')
+                    return
 
-
-
-
-
-
-
+    def reverse_traverse(self):
+        if self.tail is None:
+            print('Linked list is empty')
+        else:
+            pointer = self.tail
+            while pointer:
+                print(pointer.value,end='-->')
+                pointer = pointer.prev
+                if(pointer == self.tail):
+                    print('To End')
+                    return
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 cdll = Cdll()
 cdll.create_cdll(100)
@@ -78,3 +93,4 @@ for i in range (101,111):
 cdll.insertion(200,0)
 cdll.insertion(99,11)
 print([node.value for node in cdll])
+cdll.reverse_traverse()
