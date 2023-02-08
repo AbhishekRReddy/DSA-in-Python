@@ -134,6 +134,7 @@ class DLL:
         if self.head is None:
             print('The linked list does not exist')
             return
+        self.tail.next = None 
         pointer = self.head
         while pointer:
             pointer.prev = None
