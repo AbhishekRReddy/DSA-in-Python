@@ -102,9 +102,56 @@ class Cdll:
                     print('Element not found')
                     return
             
+    def deletion(self,location):
+        if location >= self.length:
+            print('Invalid location is given')
+            return
+        if self.head is None:
+            print('Linked List is Empty')
+            return
+        else:
+            if location == 0:
+                if self.head == self.tail:
+                    self.head.next = None
+                    self.head.prev = None
+                    self.head = None
+                    self.tail = None
+                    self.length -= 1
+                    return
+                else:
+                    self.tail.next = self.head.next
+                    self.head = self.head.next
+                    self.head.prev = self.tail
+                    self.length -= 1
+                    return
+            elif location in [-1,self.length-1] :
+                if self.head == self.tail:
+                    self.head.next = None
+                    self.head.tail = None
+                    self.head = None
+                    self.tail = None
+                    self.length -= 1
+                    return
+                else:
+                    self.head.prev = self.tail.prev
+                    self.tail = self.tail.prev
+                    self.tail.next = self.head
+                    self.length -= 1
+                    return
+            else:
+                counter = 0
+                pointer = self.head
+                while counter < location -1:
+                    pointer = pointer.next
+                    counter +=1
+                pointer.next = pointer.next.next
+                pointer.next.prev = pointer
+                self.length -= 1
+                return
 
 
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
+
 cdll = Cdll()
 cdll.create_cdll(100)
 for i in range (101,111):
@@ -112,4 +159,6 @@ for i in range (101,111):
 cdll.insertion(200,0)
 cdll.insertion(100,-1)
 print([node.value for node in cdll])
-cdll.search(100)
+cdll.deletion(12)
+print([node.value for node in cdll])
+cdll.reverse_traverse()
