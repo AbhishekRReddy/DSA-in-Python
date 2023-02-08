@@ -136,7 +136,8 @@ class DLL:
             return
         pointer = self.head
         while pointer:
-            pointer.next = None
+            pointer.prev = None
+            pointer = pointer.next
         self.head = None
         self.tail = None
         return
@@ -154,5 +155,6 @@ dll.insertion(7,5)
 print(dll.length)
 print([node.value for node in dll])
 
-dll.deletion(6)
+dll.delete_all()
+print([node.value for node in dll])
 
