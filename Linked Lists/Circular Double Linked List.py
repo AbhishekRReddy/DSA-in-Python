@@ -85,12 +85,31 @@ class Cdll:
                 if(pointer == self.tail):
                     print('To End')
                     return
+
+    def search(self,value):
+        if self.head is None:
+            print('The Linked List is Empty')
+        else:
+            pointer = self.head
+            counter = 0
+            while pointer:
+                if(pointer.value == value):
+                    print(f'{value} found at position of {counter}')
+                    return
+                pointer = pointer.next
+                counter +=1
+                if pointer == self.head:
+                    print('Element not found')
+                    return
+            
+
+
 ''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
 cdll = Cdll()
 cdll.create_cdll(100)
 for i in range (101,111):
     cdll.insertion(i,-1)
 cdll.insertion(200,0)
-cdll.insertion(99,11)
+cdll.insertion(100,-1)
 print([node.value for node in cdll])
-cdll.reverse_traverse()
+cdll.search(100)
