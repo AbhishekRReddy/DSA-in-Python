@@ -12,5 +12,22 @@ class Stack:
             return True
         else:
             return False
+
+    def push(self, value):
+        self.list.append(value)
+        return
+
+    def pop(self):
+        if self.isEmpty():
+            return
+        return self.list.pop()
+
+
 stack = Stack()
-print(stack.isEmpty())
+for i in range(1,11):
+    stack.push(i)
+    
+
+print(stack.pop())
+print('''''''')
+print(stack)
