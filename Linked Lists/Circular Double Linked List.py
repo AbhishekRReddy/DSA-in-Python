@@ -115,12 +115,12 @@ class Cdll:
                     self.head.next = None
                     self.head.prev = None
                     self.head = None
-                    self.tail = None
+                    self.tail = None 
                     self.length -= 1
                     return
                 else:
                     self.tail.next = self.head.next
-                    self.head = self.head.next
+                    self.head = self.head.next 
                     self.head.prev = self.tail
                     self.length -= 1
                     return
