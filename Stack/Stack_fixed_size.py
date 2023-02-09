@@ -13,12 +13,17 @@ class Stack:
         if self.list == []:
             return True
         return False
-    
+    def isFull(self):
+        if len(self.list) == self.maxValue:
+            return True
+        return False
+
     def push(self, value):
-        if(len(self.list) < self.maxValue):
-             self.list.append(value)
-             return
-        print('Stack is already full')
+        if self.isFull():
+            print('Stack is already full')
+            return
+        self.list.append(value)
+        
 
     def pop(self):
         if self.isEmpty():
@@ -42,6 +47,6 @@ class Stack:
 stack = Stack(10)
 for i in range(15):
     stack.push(i)
-print(stack.delete_stack())
+print(stack)
 print('@@@@@@@@@@@@@@@@@@')
 print()
