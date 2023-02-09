@@ -27,7 +27,10 @@ class Stack:
             print('stack is Empty')
             return
         return self.list[-1]
-        
+    
+    def delete_stack(self):
+        self.list=[]
+        return
 
 stack = Stack()
 for i in range(1,11):
@@ -38,6 +41,6 @@ print(stack.pop())
 print('----------------------------------------------------------')
 print(stack)
 print('----------------------------------------------------------')
-print(stack.peek())
+print(stack.delete_stack())
 print('----------------------------------------------------------')
 print(stack)
