@@ -4,7 +4,7 @@ class Stack:
 
     def __str__(self):
         values = reversed(self.list)
-        values = (str(value) for value in values)
+        values = [str(value) for value in values]
         return '\n'.join(values)
     
     def isEmpty(self):
@@ -22,6 +22,12 @@ class Stack:
             return
         return self.list.pop()
 
+    def peek(self):
+        if self.isEmpty():
+            print('stack is Empty')
+            return
+        return self.list[-1]
+        
 
 stack = Stack()
 for i in range(1,11):
@@ -29,5 +35,9 @@ for i in range(1,11):
     
 
 print(stack.pop())
-print('''''''')
+print('----------------------------------------------------------')
+print(stack)
+print('----------------------------------------------------------')
+print(stack.peek())
+print('----------------------------------------------------------')
 print(stack)
