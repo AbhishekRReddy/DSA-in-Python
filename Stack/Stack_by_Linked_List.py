@@ -28,12 +28,25 @@ class Stack:
         self.head = element
     
     def pop(self):
-        pop_value = self.head
+        pop_value = self.head.value
         self.head = self.head.next
-        return pop_value.value
+        return pop_value
+
+    def peek(self):
+        if self.head is None:
+            return 'Stack is Empty'
+        return self.head.value
+
+    def delete_all(self):
+        self.head = None
+        print('Stack has been successfully deleted')
+        return
+
+
+
 stack = Stack()
 for i in range(10):
     stack.push(i)
-print(stack.pop())
+print(stack.peek())
 print('-----------------------------')
 print(stack)
