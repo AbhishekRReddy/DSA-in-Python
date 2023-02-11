@@ -26,8 +26,14 @@ class Stack:
         element = Node(value)
         element.next = self.head
         self.head = element
-
+    
+    def pop(self):
+        pop_value = self.head
+        self.head = self.head.next
+        return pop_value.value
 stack = Stack()
 for i in range(10):
     stack.push(i)
+print(stack.pop())
+print('-----------------------------')
 print(stack)
