@@ -49,6 +49,15 @@ class Queue:
         else:
             self.queue.head = self.queue.head.next
             return
+    def peek(self):
+        return self.queue.head.value
+
+    def delete_all(self):
+        self.head =None
+        self.tail = None
+
+
+
 
 myQueue = Queue()
 for i in range(1,6):
@@ -56,3 +65,4 @@ for i in range(1,6):
 print(myQueue)
 myQueue.dequeue()
 print(myQueue)
+print(myQueue.peek())
