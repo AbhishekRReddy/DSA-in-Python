@@ -57,8 +57,11 @@ class CircularQueue:
             return 'Queue is Empty'
         else:
             return self.items[self.start]
-
-            
+    def delete_all(self):
+        self.items= self.maxsize * [None]
+        self.start = -1
+        self.top = -1
+        print('Queue is successfully deleted')
 
 
 
@@ -75,3 +78,5 @@ customQueue.enqueue(99)
 print(customQueue.dequeue())
 print(customQueue)
 print(customQueue.peek())
+customQueue.delete_all()
+print(customQueue)
