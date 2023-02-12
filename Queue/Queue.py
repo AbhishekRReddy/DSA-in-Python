@@ -28,8 +28,6 @@ class Queue:
         self.queue = []
     
 
-
-
 custom_queue = Queue()
 for i in range(1,5):
     custom_queue.enqueue(i)
