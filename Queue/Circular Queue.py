@@ -6,11 +6,14 @@ class CircularQueue:
         self.top = -1
 
     def __str__(self):
-        values = reversed([str(values) for value in self.items])
+        if self.start == -1:
+            return 'Queue is empty'
+         
+        values = reversed([str(value) for value in self.items])
         return '-->'.join(values)
     
     def isFull(self):
-        if (self.top+1 == self.start) or (self.start ==0 and self.top + 1 ==self.maxsize):
+        if (self.top+1 == self.start) or (self.start == 0 and self.top + 1 ==self.maxsize):
             return True
         else:
             return False
@@ -20,6 +23,46 @@ class CircularQueue:
             return True
         return False
     
+    def enqueue(self,value):
+        if self.isFull():
+            return 'Queue is empty'
+        else:
+            if self.top + 1 == self.maxsize:
+                self.top = 0
+            else:
+                self.top += 1
+                if self.start == -1:
+                    self.start = 0
+            self.items[self.top] = value
+            return 'Enqueue has been successfully completed'
+    
+    def dequeue(self):
+        if self.isEmpty():
+            return 'Queue is Empty'
+        else:
+            firstElem = self.items[self.start]
+            start = self.start
+            if self.start == self.top:
+                self.start = -1
+                self.top = -1
+            elif self.start + 1 == self.maxsize:
+                self.start = 0
+            else:
+                self.start += 1
+            self.items[start] = None
+            return firstElem
+                
+
+
+
+    
 
 customQueue = CircularQueue(6)
-print(customQueue.isEmpty())
+for i in range(0,6):
+    customQueue.enqueue(i)
+print(customQueue)
+print(customQueue.dequeue())
+print(customQueue)
+customQueue.enqueue(99)
+print(customQueue.dequeue())
+print(customQueue)
