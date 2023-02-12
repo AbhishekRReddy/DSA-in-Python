@@ -20,9 +20,19 @@ class Queue:
             return 'Queue is empty'
         self.queue.pop(0)
         return
+    def peek(self):
+        if self.queue == []:
+            return 'Queue is Empty'
+        return self.queue[0]
+    def delete(self):
+        self.queue = []
     
+
+
+
 custom_queue = Queue()
 for i in range(1,5):
     custom_queue.enqueue(i)
 #`custom_queue.dequeue()
+print(custom_queue.delete())
 print(custom_queue)
