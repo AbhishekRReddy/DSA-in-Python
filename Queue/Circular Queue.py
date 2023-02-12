@@ -51,7 +51,15 @@ class CircularQueue:
                 self.start += 1
             self.items[start] = None
             return firstElem
-                
+    
+    def peek(self):
+        if self.start ==-1:
+            return 'Queue is Empty'
+        else:
+            return self.items[self.start]
+
+            
+
 
 
 
@@ -66,3 +74,4 @@ print(customQueue)
 customQueue.enqueue(99)
 print(customQueue.dequeue())
 print(customQueue)
+print(customQueue.peek())
