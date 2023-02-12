@@ -14,3 +14,12 @@ class CircularQueue:
             return True
         else:
             return False
+    
+    def isEmpty(self):
+        if self.top ==-1:
+            return True
+        return False
+    
+
+customQueue = CircularQueue(6)
+print(customQueue.isEmpty())
