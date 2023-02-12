@@ -25,15 +25,20 @@ class Queue:
         values = [str(node) for node in self.queue]
         return '<--'.join(values)
 
+    def isEmpty(self):
+        if (self.queue.head is None):
+            return True
+        return False
+
     def enqueue(self, value):
         node = Node(value)
-        if self.queue.head is None:
+        if self.isEmpty():
             self.queue.head = node
             self.queue.tail = node
             return
         else:
-            node.next = self.queue.head
-            self.queue.head = node
+            self.queue.tail.next = node
+            self.queue.tail = node
             return
 
 myQueue = Queue()
