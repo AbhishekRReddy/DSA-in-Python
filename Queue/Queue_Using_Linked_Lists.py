@@ -40,9 +40,19 @@ class Queue:
             self.queue.tail.next = node
             self.queue.tail = node
             return
+    
+    def dequeue(self):
+        if self.queue.head == self.queue.tail:
+            self.queue.head = None
+            self.queue.tail = None
+            return
+        else:
+            self.queue.head = self.queue.head.next
+            return
 
 myQueue = Queue()
 for i in range(1,6):
     myQueue.enqueue(i)
 print(myQueue)
-    
+myQueue.dequeue()
+print(myQueue)
