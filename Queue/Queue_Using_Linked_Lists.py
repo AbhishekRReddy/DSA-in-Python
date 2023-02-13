@@ -71,3 +71,5 @@ for i in range(1,6):
 print(myQueue)
 print(myQueue.dequeue())
 print(myQueue)
+print(myQueue.peek())
+print(myQueue)
