@@ -42,13 +42,17 @@ class Queue:
             return
     
     def dequeue(self):
-        if self.queue.head == self.queue.tail:
-            self.queue.head = None
-            self.queue.tail = None
-            return
+        if self.isEmpty():
+            return 'Queue is empty'
         else:
-            self.queue.head = self.queue.head.next
-            return
+            tempNode = self.queue.head
+            if self.queue.head == self.queue.tail:
+                self.queue.head = None
+                self.queue.tail = None
+                return tempNode
+            else:
+                self.queue.head = self.queue.head.next
+                return tempNode
     def peek(self):
         return self.queue.head.value
 
@@ -63,6 +67,5 @@ myQueue = Queue()
 for i in range(1,6):
     myQueue.enqueue(i)
 print(myQueue)
-myQueue.dequeue()
+print(myQueue.dequeue())
 print(myQueue)
-print(myQueue.peek())
