@@ -54,6 +54,8 @@ class Queue:
                 self.queue.head = self.queue.head.next
                 return tempNode
     def peek(self):
+        if self.isEmpty():
+            return 'Queue is empty'
         return self.queue.head.value
 
     def delete_all(self):
