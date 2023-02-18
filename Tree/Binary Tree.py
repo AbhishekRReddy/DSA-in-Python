@@ -49,10 +49,28 @@ def levelOrder(rootNode):
         customQueue.enqueue(rootNode)
         while not customQueue.isEmpty():
             element = customQueue.dequeue()
-            print(element.value.value)
+            return element.value.value
             if element.value.leftNode is not None:
                 customQueue.enqueue(element.value.leftNode)
             if element.value.rightNode is not None:
                 customQueue.enqueue(element.value.rightNode)
 
-levelOrder(bt)
+def search(rootNode, value):
+    if not rootNode:
+        return 'Binary Tree is Empty'
+    else:
+        customQueue = queue.Queue()
+        customQueue.enqueue(rootNode)
+        while not customQueue.isEmpty():
+            node = customQueue.dequeue()
+            if node.value.value == value:
+                return 'Value is found in Binary Tree'
+            if node.value.leftNode is not None:
+                customQueue.enqueue(node.value.leftNode)
+            if node.value.rightNode is not None:
+                customQueue.enqueue(node.value.rightNode)
+        return 'Value is not found in the BT'
+
+for i in range(1, 8):
+    print(search(bt,i))
+print(search(bt,10))
