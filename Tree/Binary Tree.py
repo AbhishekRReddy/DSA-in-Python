@@ -32,6 +32,12 @@ def inOrderTraverse(rootNode):
     print(rootNode.value)
     inOrderTraverse(rootNode.rightNode)
 
+def postOrderTraversal(rootNode):
+    if not rootNode:
+        return
+    postOrderTraversal(rootNode.leftNode)
+    postOrderTraversal(rootNode.rightNode)
+    print(rootNode.value)
 
 
-inOrderTraverse(bt)
+postOrderTraversal(bt)
