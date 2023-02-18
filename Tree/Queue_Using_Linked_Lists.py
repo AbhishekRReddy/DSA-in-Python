@@ -53,6 +53,7 @@ class Queue:
             else:
                 self.queue.head = self.queue.head.next
                 return tempNode
+
     def peek(self):
         if self.isEmpty():
             return 'Queue is empty'
@@ -62,9 +63,7 @@ class Queue:
         self.head =None
         self.tail = None
 
-
-
-
+'''
 myQueue = Queue()
 for i in range(1,6):
     myQueue.enqueue(i)
@@ -73,3 +72,4 @@ print(myQueue.dequeue())
 print(myQueue)
 print(myQueue.peek())
 print(myQueue)
+'''
