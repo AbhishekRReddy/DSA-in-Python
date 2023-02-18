@@ -18,18 +18,20 @@ nodeA.rightNode = nodeD
 nodeB.leftNode = nodeE
 nodeB.rightNode = NodeF
 
-def preOrderTraversal(rootNode):
+def preOrderTraverse(rootNode):
     if not rootNode:
         return
     print(rootNode.value)
-    preOrderTraversal(rootNode.leftNode)
-    preOrderTraversal(rootNode.rightNode)
+    preOrderTraverse(rootNode.leftNode)
+    preOrderTraverse(rootNode.rightNode)
 
-def inOrderTraversal(rootNode):
+def inOrderTraverse(rootNode):
     if not rootNode:
         return
-    inOrderTraversal(rootNode.leftNode)
+    inOrderTraverse(rootNode.leftNode)
     print(rootNode.value)
-    inOrderTraversal(rootNode.rightNode)
+    inOrderTraverse(rootNode.rightNode)
 
-inOrderTraversal(bt)
+
+
+inOrderTraverse(bt)
