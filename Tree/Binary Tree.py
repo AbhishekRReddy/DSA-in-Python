@@ -71,6 +71,16 @@ def search(rootNode, value):
                 customQueue.enqueue(node.value.rightNode)
         return 'Value is not found in the BT'
 
-for i in range(1, 8):
-    print(search(bt,i))
-print(search(bt,10))
+def preOrderSearch(rootNode, value):
+    if not rootNode:
+        return False
+    if rootNode.value == value:
+        return True
+    if preOrderSearch(rootNode.leftNode, value):
+        return True
+    if preOrderSearch(rootNode.rightNode, value):
+        return True
+    return False
+
+
+print(preOrderSearch(bt, 2))
