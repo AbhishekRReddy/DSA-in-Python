@@ -8,14 +8,45 @@ class TreeNode:
     
     def __str__(self):
         return str(self.value)
+
+class BinaryTree:
+    def __init__(self, node = None):
+        self.root = node
+
+    def core_preOrderTraverse(self, rootNode):
+        if rootNode is None:
+            return
+        print(rootNode.value)
+        self.core_preOrderTraverse(rootNode.leftNode)
+        self.core_preOrderTraverse(rootNode.rightNode)
+    
+    def PreOrderTraverse(self):
+        self.core_preOrderTraverse(self.root)
+
+    def core_inOrderTraverse(self, rootNode):
+        if rootNode is None:
+            return
+        self.core_inOrderTraverse(rootNode.leftNode)
+        print(rootNode.value)
+        self.core_inOrderTraverse(rootNode.rightNode)
+
+    def inOrderTraverse(self):
+        self.core_inOrderTraverse(self.root)
+
+
+
+
     
 bt  = TreeNode(1)
+tree = BinaryTree(bt)
+
 nodeA = TreeNode(2)
 nodeB = TreeNode(3)
 nodeC = TreeNode(4)
 nodeD = TreeNode(5)
 nodeE = TreeNode(6)
 NodeF = TreeNode(7)
+
 bt.leftNode = nodeA
 bt.rightNode = nodeB
 nodeA.leftNode = nodeC
@@ -23,19 +54,10 @@ nodeA.rightNode = nodeD
 nodeB.leftNode = nodeE
 nodeB.rightNode = NodeF
 
-def preOrderTraverse(rootNode):
-    if not rootNode:
-        return
-    print(rootNode.value)
-    preOrderTraverse(rootNode.leftNode)
-    preOrderTraverse(rootNode.rightNode)
 
-def inOrderTraverse(rootNode):
-    if not rootNode:
-        return
-    inOrderTraverse(rootNode.leftNode)
-    print(rootNode.value)
-    inOrderTraverse(rootNode.rightNode)
+
+
+
 
 def postOrderTraversal(rootNode):
     if not rootNode:
@@ -129,15 +151,17 @@ def deleteDeepestNode(rootNode, deepestNode):
         customQueue.enqueue(rootNode)
         while not(customQueue.isEmpty()):
             current_node = customQueue.dequeue()
-            if current_node is deepestNode:
-                current_node = None
+            if current_node.value is deepestNode:
+                current_node.value = None
                 return
+
             if current_node.value.leftNode:
                 if current_node.value.leftNode is deepestNode:
                     current_node.value.leftNode = None
                     return
                 else:
                     customQueue.enqueue(current_node.value.leftNode)
+
             if current_node.value.rightNode:
                 if current_node.value.rightNode is deepestNode:
                     current_node.value.rightNode = None
@@ -146,11 +170,6 @@ def deleteDeepestNode(rootNode, deepestNode):
                     customQueue.enqueue(current_node.value.rightNode)
 
 
-
-
-levelOrder(bt)
-deleteDeepestNode(bt,getDeeepestNode(bt))
-print('------------------------------------------')
-levelOrder(bt)
+tree.inOrderTraverse()
 
 
