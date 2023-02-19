@@ -128,6 +128,7 @@ class BinaryTree:
         else:
             if self.root is deepestNode:
                 self.root = None
+                return
             else:
                 customQueue = queue.Queue()
                 customQueue.enqueue(self.root)
@@ -151,13 +152,42 @@ class BinaryTree:
                         else:
                             customQueue.enqueue(current_node.value.rightNode)
 
+    def deleteValue(self, value):
+        if self.root is None:
+            print('Binary tree is empty')
+            return 
+        else:
+            if self.root.value == value:
+                self.root = None
+                print('Binary tree has only one node and it has been deleted')
+            
+            else:
+                customQueue = queue.Queue()
+                customQueue.enqueue(self.root)
+                while not customQueue.isEmpty():
+                    root = customQueue.dequeue()
+                    if root.value.value == value:
+                        root.value.value = self.getDeeepestNode().value
+                        self.deleteDeepestNode()
+                        print('Element has been deleted')
+                        return
+                    
+                    if root.value.leftNode is not None:
+                        customQueue.enqueue(root.value.leftNode)
+                    if root.value.rightNode is not None:
+                        customQueue.enqueue(root.value.rightNode)
+
+                print('Element does not exist in the binary tree')
+                return
+                    
+
 
 btree = BinaryTree(1)
-'''
+
 for i in range(2, 8):
     btree.levelOrderInsertion(i)
-    '''
 btree.levelOrder()
 print('---------------------------------------------')
-btree.deleteDeepestNode()
+
+btree.deleteValue(5)
 btree.levelOrder()
