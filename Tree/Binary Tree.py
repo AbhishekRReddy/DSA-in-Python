@@ -179,15 +179,19 @@ class BinaryTree:
 
                 print('Element does not exist in the binary tree')
                 return
-                    
+
+    def deleteTree(self):
+        self.root = None   
+        print('Tree has been successfully deleted')
+        return          
 
 
 btree = BinaryTree(1)
-
+'''
 for i in range(2, 8):
-    btree.levelOrderInsertion(i)
+    btree.levelOrderInsertion(i) '''
 btree.levelOrder()
 print('---------------------------------------------')
 
-btree.deleteValue(5)
+btree.deleteTree()
 btree.levelOrder()
