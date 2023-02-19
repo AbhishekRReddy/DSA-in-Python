@@ -49,7 +49,7 @@ def levelOrder(rootNode):
         customQueue.enqueue(rootNode)
         while not customQueue.isEmpty():
             element = customQueue.dequeue()
-            return element.value.value
+            print(element.value.value)
             if element.value.leftNode is not None:
                 customQueue.enqueue(element.value.leftNode)
             if element.value.rightNode is not None:
@@ -82,5 +82,30 @@ def preOrderSearch(rootNode, value):
         return True
     return False
 
+def levelOrderInsertion(rootNode, element_value):
+    newNode = TreeNode(element_value)
+    if rootNode is None:
+        rootNode = newNode
+    else:
+        customQueue = queue.Queue()
+        customQueue.enqueue(rootNode)
+        while not(customQueue.isEmpty()):
+            node = customQueue.dequeue()
+            if node.value.leftNode is not None:
+                customQueue.enqueue(node.value.leftNode)
+            else:
+                node.value.leftNode = newNode
+                return 'Node has been successfully inserted'
+            if node.value.rightNode is not None:
+                customQueue.enqueue(node.value.rightNode)
+            else:
+                node.value.rightNode = newNode
+                return 'Node has been successfully inserted'
 
-print(preOrderSearch(bt, 2))
+
+
+
+
+levelOrder(bt)
+
+
