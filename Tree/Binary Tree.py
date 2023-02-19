@@ -33,8 +33,60 @@ class BinaryTree:
     def inOrderTraverse(self):
         self.core_inOrderTraverse(self.root)
 
+    def core_postOrderTraversal(self, rootNode):
+        if not rootNode:
+            return
+        self.core_postOrderTraversal(rootNode.leftNode)
+        self.core_postOrderTraversal(rootNode.rightNode)
+        print(rootNode.value)
+    def postOrderTraversal(self):
+        self.core_postOrderTraversal(self.root)
+    
+    def levelOrder(self):
+        if not self.root:
+            return
+        else:
+            customQueue = queue.Queue()
+            customQueue.enqueue(self.root)
+            while not customQueue.isEmpty():
+                element = customQueue.dequeue()
+                print(element.value.value)
+                if element.value.leftNode is not None:
+                    customQueue.enqueue(element.value.leftNode)
+                if element.value.rightNode is not None:
+                    customQueue.enqueue(element.value.rightNode)
 
+    
 
+    def search(self, value):
+        if not self.root:
+            return 'Binary Tree is Empty'
+        else:
+            customQueue = queue.Queue()
+            customQueue.enqueue(self.root)
+            while not customQueue.isEmpty():
+                node = customQueue.dequeue()
+                if node.value.value == value:
+                    return 'Value is found in Binary Tree'
+                if node.value.leftNode is not None:
+                    customQueue.enqueue(node.value.leftNode)
+                if node.value.rightNode is not None:
+                    customQueue.enqueue(node.value.rightNode)
+            return 'Value is not found in the BT'
+
+    def core_preOrderSearch(self, rootNode, value):
+        if not rootNode:
+            return False
+        if rootNode.value == value:
+            return True
+        if self.core_preOrderSearch(rootNode.leftNode, value):
+            return True
+        if self.core_preOrderSearch(rootNode.rightNode, value):
+            return True
+        return False
+
+    def preOrderSearch(self, value):
+        return self.core_preOrderSearch(self.root, value)
 
     
 bt  = TreeNode(1)
@@ -59,73 +111,11 @@ nodeB.rightNode = NodeF
 
 
 
-def postOrderTraversal(rootNode):
-    if not rootNode:
-        return
-    postOrderTraversal(rootNode.leftNode)
-    postOrderTraversal(rootNode.rightNode)
-    print(rootNode.value)
 
-def levelOrder(rootNode):
-    if not rootNode:
-        return
-    else:
-        customQueue = queue.Queue()
-        customQueue.enqueue(rootNode)
-        while not customQueue.isEmpty():
-            element = customQueue.dequeue()
-            print(element.value.value)
-            if element.value.leftNode is not None:
-                customQueue.enqueue(element.value.leftNode)
-            if element.value.rightNode is not None:
-                customQueue.enqueue(element.value.rightNode)
 
-def search(rootNode, value):
-    if not rootNode:
-        return 'Binary Tree is Empty'
-    else:
-        customQueue = queue.Queue()
-        customQueue.enqueue(rootNode)
-        while not customQueue.isEmpty():
-            node = customQueue.dequeue()
-            if node.value.value == value:
-                return 'Value is found in Binary Tree'
-            if node.value.leftNode is not None:
-                customQueue.enqueue(node.value.leftNode)
-            if node.value.rightNode is not None:
-                customQueue.enqueue(node.value.rightNode)
-        return 'Value is not found in the BT'
 
-def preOrderSearch(rootNode, value):
-    if not rootNode:
-        return False
-    if rootNode.value == value:
-        return True
-    if preOrderSearch(rootNode.leftNode, value):
-        return True
-    if preOrderSearch(rootNode.rightNode, value):
-        return True
-    return False
 
-def levelOrderInsertion(rootNode, element_value):
-    newNode = TreeNode(element_value)
-    if rootNode is None:
-        rootNode = newNode
-    else:
-        customQueue = queue.Queue()
-        customQueue.enqueue(rootNode)
-        while not(customQueue.isEmpty()):
-            node = customQueue.dequeue()
-            if node.value.leftNode is not None:
-                customQueue.enqueue(node.value.leftNode)
-            else:
-                node.value.leftNode = newNode
-                return 'Node has been successfully inserted'
-            if node.value.rightNode is not None:
-                customQueue.enqueue(node.value.rightNode)
-            else:
-                node.value.rightNode = newNode
-                return 'Node has been successfully inserted'
+
 
 
 def getDeeepestNode(rootNode):
@@ -170,6 +160,4 @@ def deleteDeepestNode(rootNode, deepestNode):
                     customQueue.enqueue(current_node.value.rightNode)
 
 
-tree.inOrderTraverse()
-
-
+print(tree.preOrderSearch(2))
