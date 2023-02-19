@@ -121,10 +121,36 @@ def getDeeepestNode(rootNode):
         deepestNode = tempNode.value
         return deepestNode
 
+def deleteDeepestNode(rootNode, deepestNode):
+    if rootNode is None:
+        return 'Binary Tree is Empty'
+    else:
+        customQueue = queue.Queue()
+        customQueue.enqueue(rootNode)
+        while not(customQueue.isEmpty()):
+            current_node = customQueue.dequeue()
+            if current_node is deepestNode:
+                current_node = None
+                return
+            if current_node.value.leftNode:
+                if current_node.value.leftNode is deepestNode:
+                    current_node.value.leftNode = None
+                    return
+                else:
+                    customQueue.enqueue(current_node.value.leftNode)
+            if current_node.value.rightNode:
+                if current_node.value.rightNode is deepestNode:
+                    current_node.value.rightNode = None
+                    return
+                else:
+                    customQueue.enqueue(current_node.value.rightNode)
 
 
 
 
-print(getDeeepestNode(bt))
+levelOrder(bt)
+deleteDeepestNode(bt,getDeeepestNode(bt))
+print('------------------------------------------')
+levelOrder(bt)
 
 
