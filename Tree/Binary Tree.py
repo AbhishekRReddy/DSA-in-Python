@@ -10,8 +10,8 @@ class TreeNode:
         return str(self.value)
 
 class BinaryTree:
-    def __init__(self, node = None):
-        self.root = node
+    def __init__(self, value = None):
+        self.root = TreeNode(value)
 
     def core_preOrderTraverse(self, rootNode):
         if rootNode is None:
@@ -56,8 +56,6 @@ class BinaryTree:
                 if element.value.rightNode is not None:
                     customQueue.enqueue(element.value.rightNode)
 
-    
-
     def search(self, value):
         if not self.root:
             return 'Binary Tree is Empty'
@@ -88,76 +86,78 @@ class BinaryTree:
     def preOrderSearch(self, value):
         return self.core_preOrderSearch(self.root, value)
 
-    
-bt  = TreeNode(1)
-tree = BinaryTree(bt)
-
-nodeA = TreeNode(2)
-nodeB = TreeNode(3)
-nodeC = TreeNode(4)
-nodeD = TreeNode(5)
-nodeE = TreeNode(6)
-NodeF = TreeNode(7)
-
-bt.leftNode = nodeA
-bt.rightNode = nodeB
-nodeA.leftNode = nodeC
-nodeA.rightNode = nodeD
-nodeB.leftNode = nodeE
-nodeB.rightNode = NodeF
-
-
-
-
-
-
-
-
-
-
-
-
-
-def getDeeepestNode(rootNode):
-    if rootNode is None:
-        return 'Binary Tree is Empty'
-    else:
-        customQueue = queue.Queue()
-        customQueue.enqueue(rootNode)
-        while not(customQueue.isEmpty()):
-            tempNode = customQueue.dequeue()
-            if tempNode.value.leftNode is not None:
-                customQueue.enqueue(tempNode.value.leftNode)
-            if tempNode.value.rightNode is not None:
-                customQueue.enqueue(tempNode.value.rightNode)
-        deepestNode = tempNode.value
-        return deepestNode
-
-def deleteDeepestNode(rootNode, deepestNode):
-    if rootNode is None:
-        return 'Binary Tree is Empty'
-    else:
-        customQueue = queue.Queue()
-        customQueue.enqueue(rootNode)
-        while not(customQueue.isEmpty()):
-            current_node = customQueue.dequeue()
-            if current_node.value is deepestNode:
-                current_node.value = None
-                return
-
-            if current_node.value.leftNode:
-                if current_node.value.leftNode is deepestNode:
-                    current_node.value.leftNode = None
-                    return
+    def levelOrderInsertion(self, element_value):
+        newNode = TreeNode(element_value)
+        if self.root is None:
+            self.root = newNode
+        else:
+            customQueue = queue.Queue()
+            customQueue.enqueue(self.root)
+            while not(customQueue.isEmpty()):
+                node = customQueue.dequeue()
+                if node.value.leftNode is not None:
+                    customQueue.enqueue(node.value.leftNode)
                 else:
-                    customQueue.enqueue(current_node.value.leftNode)
-
-            if current_node.value.rightNode:
-                if current_node.value.rightNode is deepestNode:
-                    current_node.value.rightNode = None
-                    return
+                    node.value.leftNode = newNode
+                    return 'Node has been successfully inserted'
+                if node.value.rightNode is not None:
+                    customQueue.enqueue(node.value.rightNode)
                 else:
-                    customQueue.enqueue(current_node.value.rightNode)
+                    node.value.rightNode = newNode
+                    return 'Node has been successfully inserted'
+
+    def getDeeepestNode(self):
+        if self.root is None:
+            return 'Binary Tree is Empty'
+        else:
+            customQueue = queue.Queue()
+            customQueue.enqueue(self.root)
+            while not(customQueue.isEmpty()):
+                tempNode = customQueue.dequeue()
+                if tempNode.value.leftNode is not None:
+                    customQueue.enqueue(tempNode.value.leftNode)
+                if tempNode.value.rightNode is not None:
+                    customQueue.enqueue(tempNode.value.rightNode)
+            deepestNode = tempNode.value
+            return deepestNode
+
+    def deleteDeepestNode(self):
+        deepestNode = self.getDeeepestNode()
+        if self.root is None:
+            return 'Binary Tree is Empty'
+        else:
+            if self.root is deepestNode:
+                self.root = None
+            else:
+                customQueue = queue.Queue()
+                customQueue.enqueue(self.root)
+                while not(customQueue.isEmpty()):
+                    current_node = customQueue.dequeue()
+                    if current_node.value is deepestNode:
+                        current_node.value = None
+                        return
+
+                    if current_node.value.leftNode:
+                        if current_node.value.leftNode is deepestNode:
+                            current_node.value.leftNode = None
+                            return
+                        else:
+                            customQueue.enqueue(current_node.value.leftNode)
+
+                    if current_node.value.rightNode:
+                        if current_node.value.rightNode is deepestNode:
+                            current_node.value.rightNode = None
+                            return
+                        else:
+                            customQueue.enqueue(current_node.value.rightNode)
 
 
-print(tree.preOrderSearch(2))
+btree = BinaryTree(1)
+'''
+for i in range(2, 8):
+    btree.levelOrderInsertion(i)
+    '''
+btree.levelOrder()
+print('---------------------------------------------')
+btree.deleteDeepestNode()
+btree.levelOrder()
