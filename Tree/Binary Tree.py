@@ -6,6 +6,9 @@ class TreeNode:
         self.leftNode = None
         self.rightNode = None
     
+    def __str__(self):
+        return str(self.value)
+    
 bt  = TreeNode(1)
 nodeA = TreeNode(2)
 nodeB = TreeNode(3)
@@ -103,9 +106,25 @@ def levelOrderInsertion(rootNode, element_value):
                 return 'Node has been successfully inserted'
 
 
+def getDeeepestNode(rootNode):
+    if rootNode is None:
+        return 'Binary Tree is Empty'
+    else:
+        customQueue = queue.Queue()
+        customQueue.enqueue(rootNode)
+        while not(customQueue.isEmpty()):
+            tempNode = customQueue.dequeue()
+            if tempNode.value.leftNode is not None:
+                customQueue.enqueue(tempNode.value.leftNode)
+            if tempNode.value.rightNode is not None:
+                customQueue.enqueue(tempNode.value.rightNode)
+        deepestNode = tempNode.value
+        return deepestNode
 
 
 
-levelOrder(bt)
+
+
+print(getDeeepestNode(bt))
 
 
