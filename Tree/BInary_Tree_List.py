@@ -3,6 +3,7 @@ class BinaryTree:
         self.list = (size+1) * [None]
         self.max_size = size+1
         self.last_used_index = 0
+        self.empty_list = []
 
     def __str__(self):
         if self.last_used_index == 0:
@@ -26,15 +27,18 @@ class BinaryTree:
         print('Value does not found in BT')
         return
     
-    def core_pre_order_traversal(self, index):
+    def core_pre_order_traversal(self, index = 1):
         if index > self.last_used_index:
             return
-        print(self.list[index])
+        self.empty_list.append((self.list[index]))
         self.core_pre_order_traversal(index*2)
         self.core_pre_order_traversal(index*2+1)
     
     def pre_order_traversal(self):
-        self.core_pre_order_traversal(1)
+        self.core_pre_order_traversal()
+        temp = self.empty_list[:]
+        self.empty_list = []
+        return temp
 
         
 
@@ -45,6 +49,6 @@ btree = BinaryTree(10)
 for i in range(1,11):
     btree.insert_node(i)
 print(btree)
-btree.pre_order_traversal()
+print(btree.pre_order_traversal())
 
 
