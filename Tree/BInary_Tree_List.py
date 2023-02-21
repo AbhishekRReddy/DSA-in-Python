@@ -25,6 +25,19 @@ class BinaryTree:
                 return
         print('Value does not found in BT')
         return
+    
+    def core_pre_order_traversal(self, index):
+        if index > self.last_used_index:
+            return
+        print(self.list[index])
+        self.core_pre_order_traversal(index*2)
+        self.core_pre_order_traversal(index*2+1)
+    
+    def pre_order_traversal(self):
+        self.core_pre_order_traversal(1)
+
+        
+
 
 
 
@@ -32,6 +45,6 @@ btree = BinaryTree(10)
 for i in range(1,11):
     btree.insert_node(i)
 print(btree)
-btree.search_node(11)
+btree.pre_order_traversal()
 
 
