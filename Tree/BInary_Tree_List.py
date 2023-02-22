@@ -47,6 +47,13 @@ class BinaryTree:
         print(self.list[index])
         self.in_order_traverse(index*2+1)
     
+    def post_order_traverse(self, index = 1):
+        if index > self.last_used_index:
+            return
+        self.post_order_traverse(index*2)
+        self.post_order_traverse(index*2+1)
+        print(self.list[index])
+
         
 
 
@@ -56,6 +63,6 @@ btree = BinaryTree(10)
 for i in range(1,11):
     btree.insert_node(i)
 
-btree.in_order_traverse()
+btree.post_order_traverse()
 
 
