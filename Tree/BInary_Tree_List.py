@@ -1,7 +1,7 @@
 class BinaryTree:
     def __init__(self, size):
-        self.list = (size+1) * [None]
-        self.max_size = size+1
+        self.list = (size) * [None]
+        self.max_size = size
         self.last_used_index = 0
         self.empty_list = []
 
@@ -40,6 +40,13 @@ class BinaryTree:
         self.empty_list = []
         return temp
 
+    def in_order_traverse(self, index = 1):
+        if index > self.last_used_index:
+            return
+        self.in_order_traverse(index*2)
+        print(self.list[index])
+        self.in_order_traverse(index*2+1)
+    
         
 
 
@@ -48,7 +55,7 @@ class BinaryTree:
 btree = BinaryTree(10)
 for i in range(1,11):
     btree.insert_node(i)
-print(btree)
-print(btree.pre_order_traversal())
+
+btree.in_order_traverse()
 
 
