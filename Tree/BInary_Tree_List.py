@@ -53,6 +53,11 @@ class BinaryTree:
         self.post_order_traverse(index*2)
         self.post_order_traverse(index*2+1)
         print(self.list[index])
+    
+    def level_order_traverse(self):
+        for node in self.list:
+            print(node)
+
 
         
 
@@ -63,6 +68,6 @@ btree = BinaryTree(10)
 for i in range(1,11):
     btree.insert_node(i)
 
-btree.post_order_traverse()
+btree.level_order_traverse()
 
 
