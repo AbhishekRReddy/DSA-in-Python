@@ -58,6 +58,12 @@ class BinaryTree:
         for node in self.list:
             print(node)
 
+    def delete_node(self, value): #Replaces the node with the deepest node in the tree
+        for pos, node in enumerate(self.list):
+            if node == value:
+                self.list[pos] = self.list.pop()
+                self.last_used_index -= 1
+                return   
 
         
 
@@ -65,9 +71,10 @@ class BinaryTree:
 
 
 btree = BinaryTree(10)
-for i in range(1,11):
+for i in range(1,10):
     btree.insert_node(i)
 
+btree.delete_node(5)
 btree.level_order_traverse()
 
 
