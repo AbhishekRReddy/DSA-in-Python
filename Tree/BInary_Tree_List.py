@@ -1,6 +1,6 @@
 class BinaryTree:
     def __init__(self, size):
-        self.list = (size) * [None]
+        self.list = size * [None]
         self.max_size = size
         self.last_used_index = 0
         self.empty_list = []
@@ -63,7 +63,11 @@ class BinaryTree:
             if node == value:
                 self.list[pos] = self.list.pop()
                 self.last_used_index -= 1
-                return   
+                return  
+
+    def delete_tree(self):
+        self.list =[]
+        self.last_used_index = 0 
 
         
 
