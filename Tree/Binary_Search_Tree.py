@@ -71,15 +71,15 @@ class BST:
     def level_order_traversal(self):
         if self.root is None:
             return 'The BST is empty'
-        queue = Queue()
-        queue.enqueue(self.root)
-        while not queue.isEmpty():
-            node = queue.dequeue()
-            print(node.value.data, end='--')
-            if node.value.left_node:
-                queue.enqueue(node.value.left_node)
-            if node.value.right_node: 
-                queue.enqueue(node.value.right_node)
+        queue =[]
+        queue.append(self.root)
+        while len(queue)>0:
+            node = queue.pop(0)
+            print(node.data,end='--')
+            if node.left_node:
+                queue.append(node.left_node)
+            if node.right_node: 
+                queue.append(node.right_node)
 
 
 
