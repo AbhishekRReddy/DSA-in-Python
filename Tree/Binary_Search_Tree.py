@@ -114,6 +114,8 @@ class BST:
     def delete(self, value):
         self.core_delete(self.root, value)
 
+    def delete_tree(self):
+        self.root = None
 bst = BST()
 
 bst.insert_node(5)
@@ -128,7 +130,7 @@ bst.insert_node(7)
 bst.insert_node(12)
 bst.level_order_traversal()
 print('--------------------------------')
-bst.delete(9)
+bst.delete_tree()
 print('--------------------------------')
 bst.level_order_traversal()
 
