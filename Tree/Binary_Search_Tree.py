@@ -32,17 +32,33 @@ class BST:
         if node is None:
             return
         self.core_inorder_traverse(node.left_node)
-        print(node.data)
+        print(node.data,end='--')
         self.core_inorder_traverse(node.right_node)
     
     def inorder_traverse(self):
         self.core_inorder_traverse(self.root)
 
+    def core_pre_order_traversal(self, node):
+        if node:
+            print(node.data,end='--')
+            self.core_pre_order_traversal(node.left_node)
+            self.core_pre_order_traversal(node.right_node)
+
+    def pre_order_traversal(self):
+        self.core_pre_order_traversal(self.root)
+
 
 bst = BST()
 
-for i in range(50,0,-1):
-    bst.insert_node(i)
+bst.insert_node(5)
+bst.insert_node(4)
+bst.insert_node(9)
+bst.insert_node(6)
+bst.insert_node(10)
+bst.insert_node(2)
+bst.insert_node(3)
+bst.insert_node(1)
+bst.insert_node(7)
     
-bst.inorder_traverse()
+bst.pre_order_traversal()
 
