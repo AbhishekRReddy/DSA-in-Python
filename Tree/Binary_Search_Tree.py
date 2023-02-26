@@ -40,12 +40,21 @@ class BST:
 
     def core_pre_order_traversal(self, node):
         if node:
-            print(node.data,end='--')
+            print(node.data,end = '--')
             self.core_pre_order_traversal(node.left_node)
             self.core_pre_order_traversal(node.right_node)
-
+    
     def pre_order_traversal(self):
         self.core_pre_order_traversal(self.root)
+
+    def core_post_order_traversal(self, node):
+        if node:
+            self.core_post_order_traversal(node.left_node)
+            self.core_post_order_traversal(node.right_node)
+            print(node.data, end = '--')
+
+    def post_order_traversal(self):
+        self.core_post_order_traversal(self.root)
 
 
 bst = BST()
@@ -60,5 +69,5 @@ bst.insert_node(3)
 bst.insert_node(1)
 bst.insert_node(7)
     
-bst.pre_order_traversal()
+bst.post_order_traversal()
 
