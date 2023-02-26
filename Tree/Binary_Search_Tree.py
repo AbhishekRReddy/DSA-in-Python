@@ -1,3 +1,4 @@
+from Queue_Using_Linked_Lists import Queue
 class BSTNode:
     def __init__(self, value=None):
         self.data = value
@@ -67,7 +68,24 @@ class BST:
             else:
                 return self.core_search(node.right_node, value)
 
-                
+    def level_order_traversal(self):
+        if self.root is None:
+            return 'The BST is empty'
+        queue = Queue()
+        queue.enqueue(self.root)
+        while not queue.isEmpty():
+            node = queue.dequeue()
+            print(node.value.data, end='--')
+            if node.value.left_node:
+                queue.enqueue(node.value.left_node)
+            if node.value.right_node: 
+                queue.enqueue(node.value.right_node)
+
+
+
+
+
+
     def search(self, value):
         return self.core_search(self.root, value)
 
@@ -86,5 +104,4 @@ bst.insert_node(3)
 bst.insert_node(1)
 bst.insert_node(7)
 print('--------------------------------')
-print(bst.search(11))
-
+bst.level_order_traversal()
