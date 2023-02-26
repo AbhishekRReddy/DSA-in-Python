@@ -56,6 +56,23 @@ class BST:
     def post_order_traversal(self):
         self.core_post_order_traversal(self.root)
 
+    def core_search(self, node, value):
+        if node is None:
+            return 'Value does not exists'
+        elif node.data == value:
+            return 'Value is found'
+        else:
+            if node.data >= value:
+                return self.core_search(node.left_node, value)
+            else:
+                return self.core_search(node.right_node, value)
+
+                
+    def search(self, value):
+        return self.core_search(self.root, value)
+
+
+
 
 bst = BST()
 
@@ -68,6 +85,6 @@ bst.insert_node(2)
 bst.insert_node(3)
 bst.insert_node(1)
 bst.insert_node(7)
-    
-bst.post_order_traversal()
+print('--------------------------------')
+print(bst.search(11))
 
