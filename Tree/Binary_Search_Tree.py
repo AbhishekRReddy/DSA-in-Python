@@ -81,16 +81,38 @@ class BST:
             if node.right_node: 
                 queue.append(node.right_node)
 
-
-
-
-
-
     def search(self, value):
         return self.core_search(self.root, value)
 
+    def min_value_node(self, node):
+        temp_node = node
+        while temp_node.left_node is not None:
+            temp_node = temp_node.left_node
+        return temp_node
+        
+    def core_delete(self, root_node, value):
+        if root_node is None:
+            return root_node
+        if value < root_node.data:
+            root_node.left_node = self.core_delete(root_node.left_node, value)
+        elif value > root_node.data:
+            root_node.right_node = self.core_delete(root_node.right_node, value)
+        else:
+            if root_node.left_node is None:
+                temp = root_node.right_node
+                root_node = None
+                return temp
+            if root_node.right_node is None:
+                temp = root_node.left_node
+                root_node = None
+                return temp
+            min_value = self.min_value_node(root_node.right_node)
+            root_node.data = min_value.data
+            root_node.right_node = self.core_delete(root_node.right_node, min_value.data)
+        return root_node
 
-
+    def delete(self, value):
+        self.core_delete(self.root, value)
 
 bst = BST()
 
@@ -103,5 +125,10 @@ bst.insert_node(2)
 bst.insert_node(3)
 bst.insert_node(1)
 bst.insert_node(7)
+bst.insert_node(12)
+bst.level_order_traversal()
+print('--------------------------------')
+bst.delete(9)
 print('--------------------------------')
 bst.level_order_traversal()
+
