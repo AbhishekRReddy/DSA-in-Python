@@ -1,3 +1,4 @@
+from Queue_Using_Linked_Lists import Queue
 class Node:
     def __init__(self, value = None):
         self.data = value
@@ -25,6 +26,23 @@ def inorder_traverse(node):
     print(node.data, end = '--')
     inorder_traverse(node.right_child)
 
+def level_order_traverse(node):
+    if node is None:
+        print("Tree is empty")
+        return
+    queue = Queue()
+    queue.enqueue(node)
+    while not queue.isEmpty():
+        temp_node = queue.dequeue()
+        print(temp_node.value.data)
+        if temp_node.value.left_child:
+            queue.enqueue(temp_node.value.left_child)
+        if temp_node.value.right_child:
+            queue.enqueue(temp_node.value.right_child)
+
+
+
+
 
 
 
@@ -51,4 +69,4 @@ node30.right_child = node40
 node90.left_child = node80
 node90.right_child = node100
 
-inorder_traverse(root_node)
+level_order_traverse(root_node)
