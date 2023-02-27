@@ -11,6 +11,20 @@ def pre_order_traverse(node):
     pre_order_traverse(node.left_child)
     pre_order_traverse(node.right_child)
 
+def post_order_traverse(node):
+    if node is None:
+        return
+    post_order_traverse(node.left_child)
+    post_order_traverse(node.right_child)
+    print(node.data, end = '--')
+
+def inorder_traverse(node):
+    if node is None:
+        return
+    inorder_traverse(node.left_child)
+    print(node.data, end = '--')
+    inorder_traverse(node.right_child)
+
 
 
 
@@ -37,4 +51,4 @@ node30.right_child = node40
 node90.left_child = node80
 node90.right_child = node100
 
-pre_order_traverse(root_node)
+inorder_traverse(root_node)
