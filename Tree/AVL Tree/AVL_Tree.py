@@ -74,6 +74,11 @@ def left_rotation(disbalanced_node):
     new_root.height = 1 + max(new_root.left_child, new_root.right_child)
     return new_root 
 
+def get_balance(node):
+    if node is None:
+        return 0
+    return abs(get_height(node.left_child) - get_height(node.right_child))
+
 
     
 
