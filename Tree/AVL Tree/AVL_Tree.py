@@ -58,6 +58,16 @@ def get_height(node):
         return 0
     return node.height
 
+def right_rotation(disbalanced_node):
+    new_root = disbalanced_node.left_child
+    disbalanced_node.left_child = disbalanced_node.left_child.right_child
+    new_root.right_child = disbalanced_node
+    disbalanced_node.height = 1 + max(disbalanced_node.left_child, disbalanced_node.right_child)
+    new_root.height = 1 + max(new_root.left_child, new_root.right_child)
+    return new_root
+
+
+
 
     
 
