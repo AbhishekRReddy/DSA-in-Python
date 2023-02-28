@@ -4,6 +4,7 @@ class Node:
         self.data = value
         self.left_child = None
         self.right_child = None
+        self.height = 1
 
 def pre_order_traverse(node):
     if node is None:
@@ -51,7 +52,11 @@ def search(node , value):
         search(node.left_child, value)
     elif node.data < value:
         search(node.right_child, value)
-    
+
+def get_height(node):
+    if node is None:
+        return 0
+    return node.height
 
 
     
