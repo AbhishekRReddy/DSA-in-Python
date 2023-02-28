@@ -62,22 +62,33 @@ def right_rotation(disbalanced_node):
     new_root = disbalanced_node.left_child
     disbalanced_node.left_child = disbalanced_node.left_child.right_child
     new_root.right_child = disbalanced_node
-    disbalanced_node.height = 1 + max(disbalanced_node.left_child, disbalanced_node.right_child)
-    new_root.height = 1 + max(new_root.left_child, new_root.right_child)
+    disbalanced_node.height = 1 + max(get_height(disbalanced_node.left_child), get_height(disbalanced_node.right_child))
+    new_root.height = 1 + max(get_height(new_root.left_child), get_height(new_root.right_child))
     return new_root
 
 def left_rotation(disbalanced_node):
     new_root = disbalanced_node.right_child
     disbalanced_node.left_child = disbalanced_node.right_child.left_child
     new_root.left_child = disbalanced_node
-    disbalanced_node.height = 1 + max(disbalanced_node.left_child, disbalanced_node.right_child)
-    new_root.height = 1 + max(new_root.left_child, new_root.right_child)
+    disbalanced_node.height = 1 + max(get_height(disbalanced_node.left_child), get_height(disbalanced_node.right_child))
+    new_root.height =1 + max(get_height(new_root.left_child), get_height(new_root.right_child))
     return new_root 
 
 def get_balance(node):
     if node is None:
         return 0
-    return abs(get_height(node.left_child) - get_height(node.right_child))
+    return get_height(node.left_child) - get_height(node.right_child)
+
+def insert(root_node, value):
+    if root_node is None:
+        return Node(value)
+    else:
+        if value < root_node:
+            root_node.left_child = insert(root_node.left_child, value)
+        else:
+            root_node.right_child = insert(root_node.right_child, value)
+    root_node.height = 1 + max(get_height(root_node.left_child), get_height(root_node.right_child))
+
 
 
     
