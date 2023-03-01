@@ -68,7 +68,7 @@ def right_rotation(disbalanced_node):
 
 def left_rotation(disbalanced_node):
     new_root = disbalanced_node.right_child
-    disbalanced_node.left_child = disbalanced_node.right_child.left_child
+    disbalanced_node.right_child = disbalanced_node.right_child.left_child
     new_root.left_child = disbalanced_node
     disbalanced_node.height = 1 + max(get_height(disbalanced_node.left_child), get_height(disbalanced_node.right_child))
     new_root.height =1 + max(get_height(new_root.left_child), get_height(new_root.right_child))
@@ -83,24 +83,29 @@ def insert(root_node, value):
     if root_node is None:
         return Node(value)
     else:
-        if value < root_node:
+        if value < root_node.data:
             root_node.left_child = insert(root_node.left_child, value)
         else:
             root_node.right_child = insert(root_node.right_child, value)
     root_node.height = 1 + max(get_height(root_node.left_child), get_height(root_node.right_child))
 
-
-
+    balance = get_balance(root_node)
+    #Checking for LL condition
+    if balance > 1 and value < root_node.left_child.data:
+        return right_rotation(root_node)
+    #Checkimg for the LR condition
+    if balance > 1 and value > root_node.left_child.data:
+        root_node.left_child = left_rotation(root_node.left_child)
+        return right_rotation(root_node)
+    #Checking for RR Condition
+    if balance < -1 and value > root_node.right_child.data:
+        return left_rotation(root_node)
+    #Checking for the RL rotation:
+    if balance < -1 and value < root_node.right_child.data:
+        root_node.right_child = right_rotation(root_node.right_child)
+        return left_rotation(root_node)
+    return root_node
     
-
-
-
-
-
-
-
-
-
 root_node = Node(70)
 node50 = Node(50)
 node60 = Node(60)
@@ -120,4 +125,9 @@ node30.right_child = node40
 node90.left_child = node80
 node90.right_child = node100
 
-search(root_node, 600)
+
+my_tree = Node(10)
+for i in range(1,10):
+    my_tree = insert(my_tree, i)
+
+inorder_traverse(my_tree)
