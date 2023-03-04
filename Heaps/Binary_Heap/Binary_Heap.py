@@ -9,5 +9,11 @@ def peek_heap(root_node):
         return None
     return root_node.custom_list[1]
 
+def heap_size(root_node):
+    if root_node is None:
+        return None
+    return root_node.current_heap_size
+
 
 heap = Heap(5)
+print(heap_size(heap))
