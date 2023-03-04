@@ -149,6 +149,11 @@ def delete_node(node, value):
     return node
 
 
+def delete_tree(root_node):
+    root_node = None
+    return root_node
+
+
 
 
 
@@ -181,4 +186,4 @@ for i in range(20,100,10):
 level_order_traverse(my_tree)
 my_tree = delete_node(my_tree, 50)
 print('--------------------------------------')
-level_order_traverse(my_tree)
+my_tree = delete_tree(my_tree)
