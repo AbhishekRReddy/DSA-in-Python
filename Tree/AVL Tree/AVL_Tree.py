@@ -105,6 +105,18 @@ def insert(root_node, value):
         root_node.right_child = right_rotation(root_node.right_child)
         return left_rotation(root_node)
     return root_node
+
+def minimum_value(node):
+    if node is None or node.left_child is None:
+        return node
+    return minimum_value(node.left_child)
+
+    
+
+
+
+
+
     
 root_node = Node(70)
 node50 = Node(50)
@@ -126,8 +138,11 @@ node90.left_child = node80
 node90.right_child = node100
 
 
+
 my_tree = Node(10)
-for i in range(1,10):
+for i in range(15,100,5):
     my_tree = insert(my_tree, i)
 
-inorder_traverse(my_tree)
+
+node = minimum_value(my_tree)
+print(node.data)
