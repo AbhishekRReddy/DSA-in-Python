@@ -14,6 +14,12 @@ def heap_size(root_node):
         return None
     return root_node.current_heap_size
 
+def level_order_traversal(root_node):
+    if root_node is None:
+        return None
+    for node in root_node.custom_list:
+        print(node, end = '--')
+
 
 heap = Heap(5)
-print(heap_size(heap))
+level_order_traversal(heap)
