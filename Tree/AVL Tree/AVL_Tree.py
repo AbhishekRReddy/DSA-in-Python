@@ -35,7 +35,7 @@ def level_order_traverse(node):
     queue.enqueue(node)
     while not queue.isEmpty():
         temp_node = queue.dequeue()
-        print(temp_node.value.data)
+        print(temp_node.value.data, end = ' ')
         if temp_node.value.left_child:
             queue.enqueue(temp_node.value.left_child)
         if temp_node.value.right_child:
@@ -111,7 +111,42 @@ def minimum_value(node):
         return node
     return minimum_value(node.left_child)
 
-    
+def delete_node(node, value):
+    if node is None:
+        return None
+    elif value < node.data:
+        node.left_child = delete_node(node.left_child, value)
+    elif value > node.data:
+        node.right_child = delete_node(node.right_child, value)
+    else:
+        # We reached the node that we wanted to delete
+        #The below two conditions applicable for the nodes with no children
+        #or one children
+        if node.left_child is None:
+            temp = node.right_child
+            node = None
+            return temp
+        if node.right_child is None:
+            temp = node.left_child
+            node = None
+            return temp
+        
+        temp_node = minimum_value(node.right_child)
+        node.data = temp_node.data
+        node.right_child = delete_node(node.right_child, temp_node.data)
+    node.height = 1 + max(get_height(node.left_child), get_height(node.right_child))
+    balance = get_balance(node)
+    if balance > 1 and (node.left_child and node.left_child.left_child): 
+        return right_rotation(node)
+    if balance > 1 and (node.left_child and node.left_child.right_child):
+        node.left_child = left_rotation(node.left_child)
+        return right_rotation(node)    
+    if balance < -1 and (node.right_child and get_balance(node.right_child) <=0):
+        return left_rotation(node)
+    if balance < -1 and (node.right_child and node.right_child.left_child):
+        node.right_child = right_rotation(node.right_child)
+        return left_rotation(node)    
+    return node
 
 
 
@@ -140,9 +175,10 @@ node90.right_child = node100
 
 
 my_tree = Node(10)
-for i in range(15,100,5):
+for i in range(20,100,10):
     my_tree = insert(my_tree, i)
 
-
-node = minimum_value(my_tree)
-print(node.data)
+level_order_traverse(my_tree)
+my_tree = delete_node(my_tree, 50)
+print('--------------------------------------')
+level_order_traverse(my_tree)
