@@ -101,13 +101,15 @@ def extract_node(root_node, heap_type):
     heapify_extract_node(root_node, 1, heap_type)
     return extracted_node
     
-
+def delete_heap(root_node):
+    root_node.custom_list = []
+    root_node.current_heap_size = 0
 
 
 heap = Heap(10)
 for i in range (10, 40, 5):
     insert_node(heap, i, 'Min')
 level_order_traversal(heap)
-extract_node(heap, 'Min')
+delete_heap(heap)
 print('-------------------------------')
 level_order_traversal(heap)
