@@ -105,7 +105,6 @@ def delete_heap(root_node):
     root_node.custom_list = []
     root_node.current_heap_size = 0
 
-
 heap = Heap(10)
 for i in range (10, 40, 5):
     insert_node(heap, i, 'Min')
