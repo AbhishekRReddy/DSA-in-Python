@@ -5,5 +5,13 @@ def reverse(num, sum = 0):
     sum = sum * 10 + rem
     return reverse(num//10, sum)
 
-print(reverse(456))
+
+def palindrome(num):
+    rev_num = reverse(num)
+    if num == rev_num:
+        return True
+    else:
+        return False
+
+print(palindrome(19191))
         
