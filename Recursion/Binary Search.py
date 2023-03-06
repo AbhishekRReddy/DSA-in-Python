@@ -5,7 +5,6 @@ def core_binary_search(numbers:int, num:int, low=0, high=0,first_call = True):
     if low==high and numbers[mid]!=num:
         print('number does not exist')
         return 
-
     if(numbers[mid]==num):
         return mid
     elif numbers[mid] < num:
