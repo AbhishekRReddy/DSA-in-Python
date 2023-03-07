@@ -11,6 +11,16 @@ def iter_triangle(num):
         print()
         num -= 1
 
-iter_triangle(5)
+def triangle(row, col = 1):
+    if row == 0:
+        return
+    if row < col:
+        print()
+        triangle(row -1, 1)
+    else:
+        print('*', end= '')
+        triangle(row, col+1)
+
+triangle(5)
 
 
