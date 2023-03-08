@@ -6,9 +6,7 @@ def my_bubble_sort(numbers):
         not_sorted = False
         for i in range(start, end):
             if numbers[i] > numbers[i+1]:
-                temp = numbers[i]
-                numbers[i] = numbers[i+1]
-                numbers[i+1] = temp
+                numbers[i], numbers[i+1] = numbers[i+1], numbers[i]
                 not_sorted = True
         end -= 1
 
