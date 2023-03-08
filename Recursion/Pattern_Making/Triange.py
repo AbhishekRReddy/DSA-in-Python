@@ -1,3 +1,4 @@
+import traceback
 def traingle(num):
     if num == 0:
         return 
@@ -15,12 +16,15 @@ def triangle(row, col = 1):
     if row == 0:
         return
     if row < col:
-        print()
+        traceback.print_stack()
         triangle(row -1, 1)
-    else:
-        print('*', end= '')
+        print()
+    else:        
         triangle(row, col+1)
+        print('*', end= '')
+
 
 triangle(5)
+
 
 
