@@ -9,6 +9,6 @@ def selection_sort(numbers):
 
 
 
-numbers = [4,1,2,6,7,3,7,11,13,0,1,2,3]
+numbers = [4,1,2,6,7,3,7,-11,13,0,1,2,3]
 selection_sort(numbers)
 print(numbers)  

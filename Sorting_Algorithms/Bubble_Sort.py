@@ -22,6 +22,6 @@ def bubble_sort(numbers):
 
 
 
-numbers = [4,8,1,2,10,47,55,1,0]
+numbers = [4,8,1,2,10,-47,55,1,0]
 bubble_sort(numbers)
 print(numbers)
