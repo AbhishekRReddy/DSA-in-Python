@@ -22,7 +22,5 @@ def merge_sort(list):
     left = merge_sort(list[:mid])
     right = merge_sort(list[mid:])
     return merge(left,right)
-
-
 list=[2,4,1,3,5,6]
 print(merge_sort(list))
