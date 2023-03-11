@@ -1,7 +1,7 @@
 def Insertion_Sort(array):
     for i in range(1, len(array)):
         key = array[i] #This is the element I want INSERT in the left subarray
-        j = i-1 #From here the sorted array will be there
+        j = i-1 #From o to i-1 here the sorted array will be there
         while j>=0 and key < array[j]:
             array[j+1] = array[j] #Moving every element in the left sub array one position left
             j -= 1
@@ -11,7 +11,6 @@ def Insertion_Sort(array):
         array[j+1] = key
         #Why j+1 ? We have already decremeneted and while condition failing when j is pointing certain element
         #which is greater than the key. So we want to insert in the next position of such element.
-
 
 list = [2,2,4,0,5,7,3,2,1,9,10]
 Insertion_Sort(list)
