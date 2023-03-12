@@ -25,9 +25,8 @@ def merge(list, start, end):
         list[k] = right[j]
         j += 1
         k += 1
-
 def merge_sort(list, start, end):
-    if start == end-1:
+    if start == end-1: #This is necessary as the code will enter the infinite recursion
         return
     mid = (start + end) // 2
     merge_sort(list, start, mid)
