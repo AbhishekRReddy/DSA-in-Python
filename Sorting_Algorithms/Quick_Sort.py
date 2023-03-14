@@ -9,7 +9,7 @@ def pivot_func(nums, pivot, last_index):
             swap(nums,swap_index,i)
     swap(nums,pivot,swap_index)
     return swap_index
-
+ 
 def quick_sort(nums,left,right):
     if left == right:
         return
