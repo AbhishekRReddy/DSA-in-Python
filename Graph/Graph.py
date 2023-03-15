@@ -24,7 +24,17 @@ class Graph:
     def print_graph(self):
         for vertex in self.adjacency_list:
             print(vertex,':',self.adjacency_list[vertex])
-    
+    def delete_vertex(self,vertex):
+        if vertex in self.adjacency_list.keys():
+            child_vertices = self.adjacency_list[vertex]
+            for child_veretx in child_vertices:
+                self.adjacency_list[child_veretx].remove(vertex)
+            del self.adjacency_list[vertex]      
+
+
+
+
+
 graph = Graph()
 graph.add_vertex('a')
 graph.add_vertex('b')
@@ -33,6 +43,6 @@ graph.add_edge('a','b')
 graph.add_edge('a','c')
 graph.add_vertex('d')
 graph.print_graph()
-graph.remove_edge('a','d')
+graph.delete_vertex('b')
 print('-------------------')    
 graph.print_graph()
