@@ -6,23 +6,20 @@ class Graph:
         if vertex not in self.adjacency_list.keys():
             self.adjacency_list[vertex] = []
         
-    def add_edge(self,vertex,edge):
-        self.adjacency_list[vertex].append(edge)
-    
+    def add_edge(self,vertex1,veretx2):
+        if vertex1 in self.adjacency_list.keys() and veretx2 in self.adjacency_list.keys():   
+            self.adjacency_list[vertex1].append(veretx2)
+            self.adjacency_list[veretx2].append(vertex1)
+            return True
+        return 'Invalid vertex  '
     def print_graph(self):
         for vertex in self.adjacency_list:
             print(vertex,':',self.adjacency_list[vertex])
     
-
-
-dict = {'a':['b','c'],
-        'b':['d','e',],
-        'c':['e'],
-        'd':['e','f'],
-        'f':['d','e']
-}
 graph = Graph()
 graph.add_vertex('a')
+graph.add_vertex('b')
+graph.add_vertex('c')
 graph.add_edge('a','b')
 graph.add_edge('a','c')
 graph.print_graph()
