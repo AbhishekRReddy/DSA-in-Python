@@ -14,9 +14,13 @@ class Graph:
         return 'Invalid vertex  '
     def remove_edge(self,vertex1,vertex2):
         if vertex1 in self.adjacency_list.keys() and vertex2 in self.adjacency_list.keys():
-            self.adjacency_list[vertex1].remove(vertex2)
-            self.adjacency_list[vertex2].remove(vertex1)
-        return 'Invalid vertex  '
+            try:
+                self.adjacency_list[vertex1].remove(vertex2)
+                self.adjacency_list[vertex2].remove(vertex1)
+            except ValueError:
+                print('No edge between the given two vertices')
+                return False
+        return 'Invalid vertex '
     def print_graph(self):
         for vertex in self.adjacency_list:
             print(vertex,':',self.adjacency_list[vertex])
@@ -27,7 +31,8 @@ graph.add_vertex('b')
 graph.add_vertex('c')
 graph.add_edge('a','b')
 graph.add_edge('a','c')
+graph.add_vertex('d')
 graph.print_graph()
-graph.remove_edge('a','c')
-print('-------------------')
+graph.remove_edge('a','d')
+print('-------------------')    
 graph.print_graph()
