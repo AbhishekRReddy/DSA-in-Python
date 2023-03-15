@@ -1,14 +1,19 @@
 class Graph:
-    def __init__(self,gdict=None):
-        if gdict is None:
-            gdict = {}
-        self.gdict = gdict
-    
-    def add_edge(self,vertex,edge):
-        self.gdict[vertex].append(edge)
+    def __init__(self):
+        self.adjacency_list = {}
 
     def add_vertex(self,vertex):
-        self.gdict[vertex] = []
+        if vertex not in self.adjacency_list.keys():
+            self.adjacency_list[vertex] = []
+        
+    def add_edge(self,vertex,edge):
+        self.adjacency_list[vertex].append(edge)
+    
+    def print_graph(self):
+        for vertex in self.adjacency_list:
+            print(vertex,':',self.adjacency_list[vertex])
+    
+
 
 dict = {'a':['b','c'],
         'b':['d','e',],
@@ -16,8 +21,8 @@ dict = {'a':['b','c'],
         'd':['e','f'],
         'f':['d','e']
 }
-graph = Graph(dict)
-graph.add_edge('a','d')
-graph.add_vertex('z')
-graph.add_edge('z','g')
-print(graph.gdict)
+graph = Graph()
+graph.add_vertex('a')
+graph.add_edge('a','b')
+graph.add_edge('a','c')
+graph.print_graph()
