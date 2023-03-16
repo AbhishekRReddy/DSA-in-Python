@@ -30,10 +30,18 @@ class Graph:
             for child_veretx in child_vertices:
                 self.adjacency_list[child_veretx].remove(vertex)
             del self.adjacency_list[vertex]      
-
-
-
-
+    
+    def bfs(self,vertex):
+        visited = [vertex]
+        queue =[vertex]
+        while queue:
+            deq_vertex = queue.pop(0)
+            print(deq_vertex)
+            for adj_vertex in self.adjacency_list[deq_vertex]:
+                if adj_vertex not in visited:
+                    visited.append(adj_vertex)
+                    queue.append(adj_vertex)
+    
 
 graph = Graph()
 graph.add_vertex('a')
@@ -43,6 +51,6 @@ graph.add_edge('a','b')
 graph.add_edge('a','c')
 graph.add_vertex('d')
 graph.print_graph()
-graph.delete_vertex('b')
 print('-------------------')    
-graph.print_graph()
+graph.bfs('a')
+
