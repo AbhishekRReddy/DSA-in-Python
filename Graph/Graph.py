@@ -55,7 +55,11 @@ class Graph:
                 if adj_vertex not in visited:
                     visited.append(adj_vertex)
                     stack.append(adj_vertex)
+    
+                    
 
+
+    
 graph = Graph()
 graph.add_vertex('a')
 graph.add_vertex('b')
