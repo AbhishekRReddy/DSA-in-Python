@@ -1,6 +1,8 @@
 def swap(nums, index1, index2):
     nums[index1], nums[index2] = nums[index2], nums[index1]
+
 #Pivot Function allocates the number to its specified value
+
 def pivot_func(nums, pivot, last_index):
     swap_index = pivot
     for i in range(pivot+1,last_index+1):

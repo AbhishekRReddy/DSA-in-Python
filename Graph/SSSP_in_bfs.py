@@ -26,7 +26,7 @@ class Graph:
 graph = Graph()
 graph.add_vertex('a')
 graph.add_vertex('b')
-graph.add_vertex('c')
+graph.add_vertex('c')Im
 graph.add_vertex('d')
 graph.add_vertex('e')
 graph.add_vertex('f')
