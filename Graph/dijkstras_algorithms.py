@@ -40,4 +40,11 @@ class dijkstra:
                     heapq.heappush(self.heap, end)
             actual_vertex.visited = True
 
-        
+    def get_shortest_path(self,vertex):
+        print(f'The minimum distance to the given vertex {vertex.min_distance}')
+        temp = []
+        while vertex:
+            temp.insert(0,vertex.name)  
+            vertex = vertex.previous_node
+        print(temp)
+    
