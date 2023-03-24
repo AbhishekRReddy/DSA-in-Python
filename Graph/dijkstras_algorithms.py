@@ -31,7 +31,7 @@ class dijkstra:
             if actual_vertex.visited:
                 continue
             for edge in actual_vertex.neighbours:
-                start = edge.start_vetex
+                start = edge.start_vertex
                 end = edge.end_vertex
                 new_distance = start.min_distance + edge.weight
                 if end.min_distance > new_distance:
@@ -47,4 +47,33 @@ class dijkstra:
             temp.insert(0,vertex.name)  
             vertex = vertex.previous_node
         print(temp)
-    
+
+
+nodeA = Node('A')
+nodeB = Node('B')
+nodeC= Node('C')    
+nodeD = Node('D')
+nodeE = Node('E')
+nodeF = Node('F')
+nodeG = Node('G')
+nodeH = Node('H')
+nodeA.add_edge(nodeB,6)
+nodeA.add_edge(nodeD,9)
+nodeA.add_edge(nodeC,10)
+nodeB.add_edge(nodeD,5)
+nodeB.add_edge(nodeE,16)
+nodeB.add_edge(nodeF,13)
+nodeC.add_edge(nodeD,6)
+nodeC.add_edge(nodeH,5)
+nodeC.add_edge(nodeG,21)
+nodeD.add_edge(nodeF,8)
+nodeD.add_edge(nodeH,7)
+nodeE.add_edge(nodeG,10)
+nodeF.add_edge(nodeE,4)
+nodeF.add_edge(nodeG,12)
+nodeH.add_edge(nodeF,2)
+nodeH.add_edge(nodeF,14)
+
+algo =dijkstra()
+algo.calculate_distance(nodeA)
+algo.get_shortest_path(nodeF)
