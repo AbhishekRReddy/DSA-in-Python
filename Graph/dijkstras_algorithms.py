@@ -15,7 +15,10 @@ class Node:
     
     def __lt__(self,other_node):
         return self.min_distance < other_node.min_distance
-
+    
+    def add_edge(self, other_node,weight):
+        self.neighbours.append(Edge(self,other_node,weight))
+        
 class dijkstra:
     def __init__(self):
         self.heap = []
