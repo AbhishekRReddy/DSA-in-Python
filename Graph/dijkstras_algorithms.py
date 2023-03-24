@@ -1,3 +1,4 @@
+import heapq
 class Edge:
     def __init__(self,start_vertex,end_vertex,weight):
         self.start_vertex = start_vertex
@@ -15,15 +16,25 @@ class Node:
     def __lt__(self,other_node):
         return self.min_distance < other_node.min_distance
 
-class Graph:
+class dijkstra:
     def __init__(self):
-        self.adj_list = {}
-
-    def add_vertex(self,vertex):
-        self.adj_list[vertex] = []
-
-    def add_edge(self,vertex1, vertex2):
-        if vertex1 in self.adj_list and vertex2 in self.adj_list:
-            self.adj_list[vertex1] = vertex2
-
+        self.heap = []
     
+    def calculate_distance(self,start_vertex):
+        start_vertex.min_distance = 0
+        heapq.heappush(self.heap, start_vertex)
+        while self.heap:
+            actual_vertex = heapq.heappop(self.heap)
+            if actual_vertex.visited:
+                continue
+            for edge in actual_vertex.neighbours:
+                start = edge.start_vetex
+                end = edge.end_vertex
+                new_distance = start.min_distance + edge.weight
+                if end.min_distance > new_distance:
+                    end.min_distance = new_distance
+                    end.previous_node = start
+                    heapq.heappush(self.heap, end)
+            actual_vertex.visited = True
+
+        
