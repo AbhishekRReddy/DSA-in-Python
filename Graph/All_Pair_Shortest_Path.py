@@ -49,6 +49,12 @@ def shortest_path(graph,start,end):
     print(distances)
     path.reverse()
     return path
+def all_shortest_pairs(graph):
+    for node in graph:
+        for adj_node in graph:
+            path = shortest_path(graph,node,adj_node)
+            print(path)
+            print('------------------------------------')
 
 graph = {'A' : {'B':6,'D':9,'C':10},
          'B' : {'D':5,'E':16,'F':13},
@@ -60,8 +66,7 @@ graph = {'A' : {'B':6,'D':9,'C':10},
          'H':{'F':2,'G':14}
 }
 
-path = shortest_path(graph, 'A', 'F')
-print(path)
+path = all_shortest_pairs(graph)
 
 
 
