@@ -3,6 +3,7 @@ def fibo(n):
         print(0)
         return
     if n == 1:
+        print(0)
         print(1)
         return 
     fibo_val1 = 0
