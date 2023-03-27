@@ -46,13 +46,14 @@ class Disjoint:
         else:
             self.parent[ult_v] = ult_u
             self.size[ult_u] += self.size[ult_v]
-ds = Disjoint(7)
+
+'''ds = Disjoint(7)
 ds.union_by_size(1,2)
 ds.union_by_size(3,4)
 ds.union_by_size(4,5)
 ds.union_by_size(5,6)
 ds.union_by_size(6,7)
 print(ds.find_ult_parent(7))        
-
+'''
 
 
