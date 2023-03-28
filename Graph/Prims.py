@@ -14,7 +14,8 @@ class Graph:
         print(self.graph)
 
     def prims_mst(self):
-        visited = [0 for _ in range(self.V)]
+        visited = [0 for _ in range(self.V)] #Dont use 'in' operator to check the element is there in list or not.
+        #That will leads to O(n) complexity
         heap = []
         pq.heappush(heap, [0,0,0]) #w,d,s
         #We are starting from standing 0th node.
