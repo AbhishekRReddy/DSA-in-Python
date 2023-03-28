@@ -19,7 +19,7 @@ class Graph:
         self.graph = sorted(self.graph, key = lambda  item : item[2])
         #Sort based on the weight of the Graph.
         for edge in self.graph: # MST contains the number of edges = V - 1
-            s, d, w =edge 
+            s, d, w = edge 
             x = ds.find_ult_parent(s) #Checking which sets does these S and D belongs.
             y = ds.find_ult_parent(d)
             if x != y: #They should not belong same set as it will form the cycle.
@@ -31,6 +31,7 @@ class Graph:
 
 g =Graph(6)
 g.add_edge(1,4,1)
+g.add_edge(4,1,1)
 g.add_edge(4,2,3)
 g.add_edge(5,1,4)
 g.add_edge(5,4,9)
