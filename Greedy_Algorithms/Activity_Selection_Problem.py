@@ -11,12 +11,13 @@ activities = [['A1', 0, 6],
 ]
 def print_max_activities(activities):
     activities.sort(key =lambda x:x[2]) #This is key to algoritms tht greedily select the minimum finish time.
-    i = 0
+    i = 0 #Setting the minium element in the sorted list is the first activity
     first_act = activities[i][0]
     print(first_act)
     for j in range(len(activities)):
-        if activities[j][1] > activities[i][2]:
+        if activities[j][1] > activities[i][2]: 
+            #Greedily search for next immedidiate task that can be quickly performed
             print(activities[j][0])
-            i = j
+            i = j #Whenever you get the next task update it as the latest task
 print_max_activities(activities)
     
