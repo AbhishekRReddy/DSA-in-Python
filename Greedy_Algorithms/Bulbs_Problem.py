@@ -26,6 +26,7 @@ The first and the only argument contains an integer array A, of size N.
 Output Format
 Return an integer representing the minimum number of switches required.
 
+
 '''
 
 
