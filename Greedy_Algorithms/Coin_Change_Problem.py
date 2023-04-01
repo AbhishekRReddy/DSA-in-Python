@@ -18,7 +18,7 @@ def coin_change(total_amount, denominations):
             current_index += 1
         if total_amount == 0:
             return
-        if current_index == len(denominations):
+        if current_index == len(denominations): #This becomes true when the index reaches the out of the list
             print('Not possible')
             return
 
