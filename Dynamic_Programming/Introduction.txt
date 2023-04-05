@@ -1,0 +1,12 @@
+Dynamic Programming
+The word dynamic basically comes from the problem solving appraoch where one needs to 
+find the best decisions one after another.   
+
+Problems with Optimal Substructure and Overlapping Problem can be solved with DP.
+Optimal Substructure - By Combining the optimal solution of sub-problems, the solution to Overall problem can be 
+obtained.Overlapping Problem - If we are solving the same sub-problems again and aagin through recursion then these
+subproblems are Overlapping. Such problems can be solved.
+
+We can solve DP problems with two approaches viz.,
+1. Memoization- Top-Down approach - Store the values and use it if the same sub-problem arises in future.
+2. Tabular method - Bottom-Up appraoch - Start from the smaller problem and use that solution to solve slightly bigger problem,unitll the final solution is reached.
