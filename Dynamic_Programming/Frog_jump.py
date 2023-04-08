@@ -16,6 +16,19 @@ def frogJump(n: int, heights: list[int]) -> int:
     dp[n] = left
     return dp[n]
 
-dp = {}
-print(frogJump(4,[10,20,30,10]))
-print(dp)
+def frogJump_tab(n,heights):
+    dp = [0]*n
+    dp[0] = 0 #Base Case
+    for i in range(1, n):
+        one_jump = dp[i-1] + abs(heights[i] - heights[i-1])
+        two_jump = float('inf')
+        if i > 1:
+            two_jump = dp[i-2] + abs(heights[i]- heights[i-2])
+        dp[i] = min(one_jump,two_jump)
+    return dp[n-1]
+
+
+
+
+
+print(frogJump_tab(4,[10,20,30,10]))
