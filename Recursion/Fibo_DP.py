@@ -12,7 +12,7 @@ def fibo_tab(n,dp):
     dp[1] = 1
     for i in range(2,n+1):
         dp[i] = dp[i-1] + dp[i-2]
-    return dp[n]
+    return dp[n-1]
 
 def febo_space(n):
     prev1 = 0
@@ -28,3 +28,4 @@ def febo_space(n):
 n = 7
 dp = [-1]*(n+1)
 print(febo_space(7))
+print(fibo_tab(n,dp))
