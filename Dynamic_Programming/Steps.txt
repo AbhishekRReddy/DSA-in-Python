@@ -1,0 +1,9 @@
+Recusrion steps
+1. Express the problem in terms of the indices.
+2. Do all the possible ways.
+3. Take the minimum/maximum for the optimation problems.
+
+Dynamic Programming- Memoization
+1. Look at the paramters changing.
+2. Use the dp list/dictionary to store before returning the value.
+3. Check after the base condition that whether do we have a solution stored in list/dictionary or not.
