@@ -12,6 +12,6 @@ def subsequence(index, sub_seq,nums):
     sub_seq.remove(nums[index]) #Dont't take condition
     subsequence(index+1, sub_seq, nums)
 
-nums= [3,1,2]
+nums= [1,2,1]
 my_list=[]
 subsequence(0, my_list, nums)
