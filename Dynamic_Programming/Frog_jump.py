@@ -1,7 +1,7 @@
 '''
 https://www.codingninjas.com/codestudio/problems/frog-jump_3621012
 '''
-def frogJump(n: int, heights: list[int]) -> int:
+def frogJump(n: int, heights: list[int],dp) -> int:
     # Write your code here.
     if n == 1:
         dp[n] = 0
@@ -28,9 +28,5 @@ def frogJump_tab(n,heights):
         prev2 = prev1
         prev1 = curri
     return curri
-
-
-
-
 
 print(frogJump_tab(4,[10,20,30,10]))
