@@ -17,8 +17,7 @@ def my_func(m,n):
 		right = my_func(m,n-1)
 	return left + right
 
-
-def uniquePaths(m, n):
+ def uniquePaths(m, n):
 	# Write your code here.
 	return my_func(m-1,n-1)
 
@@ -44,3 +43,23 @@ def uniquePaths(m, n):
 	# Write your code here.
 	dp = [ [-1] *n for i in range(m)]
 	return my_func(m-1,n-1,dp)
+
+'''
+DP with tabulation
+'''
+def uniquePaths(m, n):
+	# Write your code here.
+	dp = [ [-1] *n for i in range(m)]
+	for i in range(0,m):
+		for j in range(0,n):
+			left = 0
+			right =0
+			if i==0 and j ==0:
+				dp[i][j] = 1
+			else:
+				if i>0:
+					left = dp[i-1][j]
+				if j>0:
+					right = dp[i][j-1]
+				dp[i][j] = left+right
+	return dp[m-1][n-1]
