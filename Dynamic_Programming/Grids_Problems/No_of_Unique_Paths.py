@@ -63,3 +63,26 @@ def uniquePaths(m, n):
 					right = dp[i][j-1]
 				dp[i][j] = left+right
 	return dp[m-1][n-1]
+
+    '''
+    DP tabulation with space optimization
+    '''
+def uniquePaths(m, n):
+	# Write your code here.
+	prev_row = [0]*n
+	for i in range(0,m):
+		dp = [0]*n
+		for j in range(0,n):
+			left = 0
+			right = 0
+			if i==0 and j ==0:
+				dp[0] = 1
+			else:
+				if i>0:
+					left = prev_row[j]
+				if j>0:
+					right = dp[j-1]
+				dp[j] = left+right
+		prev_row = dp
+
+	return prev_row[n-1]
