@@ -37,3 +37,22 @@ def subsetSumToK(n, k, arr):
     # Return a boolean variable 'True' or 'False' denoting the answer
     return subek(n-1,k,arr,dp)
     
+'''
+DP with Tabulation
+'''
+def subsetSumToK(n, k, arr):
+    dp = [ [-1]*(k+1) for _ in range(n)]
+    for i in range(n):
+        dp[i][0] = True
+    # Write your code here
+    # Return a boolean variable 'True' or 'False' denoting the answer
+    for j in range(1,k+1):
+        dp[0][j] = j == arr[0]
+    for x in range(1,n):
+        for y in range(1,k+1):
+            not_take = dp[x-1][y]
+            take = False
+            if y >= arr[x]:
+                take = dp[x-1][y-arr[x]]
+            dp[x][y] = take or not_take
+    return dp[n-1][k]
