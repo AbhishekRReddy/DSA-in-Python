@@ -56,3 +56,24 @@ def subsetSumToK(n, k, arr):
                 take = dp[x-1][y-arr[x]]
             dp[x][y] = take or not_take
     return dp[n-1][k]
+
+'''
+DP Tabulation with Space Optimization
+'''
+
+def subsetSumToK(n, k, arr):
+    dp = [-1]*(k+1)
+    dp[0] = True
+    for j in range(1,k+1):
+        dp[j] = j == arr[0]
+    for x in range(1,n):
+        temp = [0]*(k+1)
+        temp[0] = True
+        for y in range(1,k+1):
+            not_take = dp[y]
+            take = False
+            if y >= arr[x]:
+                take = dp[y-arr[x]]
+            temp[y] = take or not_take
+        dp = temp
+    return dp[k]
