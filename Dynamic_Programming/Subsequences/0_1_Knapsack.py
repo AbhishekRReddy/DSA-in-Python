@@ -56,5 +56,25 @@ def maxProfit(values, weights, n, w):
             dp[i][j] = max(not_pick,pick)
     return dp[n-1][w]
 
+'''
+DP with tabulation with Space Optimization
+'''
+def maxProfit(values, weights, n, w):
+    dp = [0]*(w+1)
+    for x in range(w+1):
+        if x >= weights[0]:
+            dp[x] = values[0]
+        else:
+            dp[x] = 0
+    for i in range(1,n):
+        curr_row = [0] * (w+1)
+        for j in range(w+1):
+            not_pick = dp[j]
+            pick = float('-inf')
+            if j >= weights[i]:
+                pick = values[i] + dp[j-weights[i]]
+            curr_row[j] = max(not_pick,pick)
+        dp = curr_row
+    return dp[w]
 
 
