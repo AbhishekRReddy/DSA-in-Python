@@ -40,3 +40,22 @@ def countWaysToMakeChange(denominations, value) :
 
     return way(denominations,value, len(denominations)-1,dp)
 
+'''
+DP with Tabulation
+'''
+def countWaysToMakeChange(denominations, value) :
+	# Your code goes here
+    dp = [ [-1]*len(denominations) for _ in range(value+1)]
+    for i in range(len(denominations)):
+        dp[0][i] = 1
+    for m in range(1, value+1):
+        for n in range(len(denominations)):
+            pick = 0
+            not_pick = 0
+            if n > 0:
+                not_pick = dp[m][n-1]
+            if denominations[n] <= m:
+                pick = dp[m-denominations[n]][n]
+            dp[m][n] = not_pick + pick
+    
+    return dp[value][len(denominations)-1]
