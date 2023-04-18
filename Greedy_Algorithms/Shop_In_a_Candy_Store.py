@@ -1,9 +1,7 @@
 '''
 https://practice.geeksforgeeks.org/problems/shop-in-candy-store1145/1?utm_source=geeksforgeeks&utm_medium=article_practice_tab&utm_campaign=article_practice_tab
 '''
-
 class Solution:
-
     def candyStore(self, candies,N,K):
         # code here
         candies.sort()
