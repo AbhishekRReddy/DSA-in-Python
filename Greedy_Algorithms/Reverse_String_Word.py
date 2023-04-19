@@ -9,9 +9,9 @@ class Solution:
         temp =''
         global_string = ''
         for l in range(len(S)-1,-1,-1):
-            if S[l]== '.':
+            if S[l] == '.':
                 global_string = global_string + temp[::-1] +'.'
-                temp =''
+                temp = ''
                 continue
             temp = temp + S[l]
         global_string = global_string + temp[::-1]
