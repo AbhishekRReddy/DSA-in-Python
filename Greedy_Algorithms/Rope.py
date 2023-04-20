@@ -16,4 +16,5 @@ class Solution:
             global_cost += cost
             heapq.heappush(arr,cost)
         return global_cost
+        
 
