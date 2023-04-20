@@ -3,6 +3,7 @@ https://leetcode.com/problems/min-cost-climbing-stairs/description/
 '''
 '''
 DP with Memoization
+
 '''
 def minc(cost, n,dp):
     if n == 0:
@@ -24,3 +25,22 @@ class Solution:
         n = len(cost)
         dp = [-1] * (n+1)
         return minc(cost,n,dp)
+    
+'''
+DP with Tabulation method
+'''
+
+class Solution:
+    def minCostClimbingStairs(self, cost: list[int]) -> int:
+        n = len(cost)
+        dp = [-1] * (n+1)
+        dp[0] = cost[0]
+        dp[1] = cost[1]
+        for i in range(2,n+1):
+            left = dp[i-1]
+            right = dp[i-2]
+            if i < n:
+                left += cost[i]
+                right += cost[i]
+            dp[i] = min(left,right)
+        return dp[n]
