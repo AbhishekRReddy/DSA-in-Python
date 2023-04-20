@@ -44,3 +44,23 @@ class Solution:
                 right += cost[i]
             dp[i] = min(left,right)
         return dp[n]
+
+'''
+DP tabulation with space optimization
+'''
+class Solution:
+    def minCostClimbingStairs(self, cost: list[int]) -> int:
+        n = len(cost)
+        prev2 = cost[0]
+        prev1 = cost[1]
+        curr = 0
+        for i in range(2,n+1):
+            left = prev1
+            right = prev2
+            if i < n:
+                left += cost[i]
+                right += cost[i]
+            curr = min(left,right)
+            prev2 = prev1
+            prev1 = curr
+        return curr
