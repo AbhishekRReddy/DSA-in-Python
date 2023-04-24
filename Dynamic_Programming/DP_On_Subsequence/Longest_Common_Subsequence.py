@@ -36,7 +36,7 @@ class Solution:
         return lstr(text1,text2,m-1,n-1,dp)
 
 '''
-DP with Tabualation - array is left shifted to accomodate the base cases.
+DP with Tabualation - array is left shifted to accomodate the base cases
 '''
 class Solution:
     def longestCommonSubsequence(self, text1: str, text2: str) -> int:
