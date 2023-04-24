@@ -57,3 +57,28 @@ class Solution:
                 non_match2 = dp[x-1][y]
                 dp[x][y] = max(non_match1, non_match2) 
         return dp[m-1][n-1]
+    
+'''
+Space Optimization------Make sure you create a deep copy at the end of each row
+'''
+class Solution:
+    def longestCommonSubsequence(self, text1: str, text2: str) -> int:
+        m = len(text1) + 1
+        n = len(text2) + 1 #For shifitng purpose
+        prev = [0]*n
+        curr = [0]*n 
+        
+        for x in range(1,m):
+            #curr = [0]*n
+            #print(curr) 
+            for y in range(1,n):
+                if text1[x-1] == text2[y-1]:
+                    curr[y] = 1 + prev[y-1]
+                else:    
+                    non_match1 = curr[y-1]
+                    non_match2 = prev[y]
+                    curr[y] = max(non_match1, non_match2) 
+            prev = curr[:]
+            print(curr)
+        
+        return prev[n-1]
