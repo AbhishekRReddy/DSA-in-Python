@@ -66,3 +66,28 @@ class Solution:
                 dp[i][j] = profit
         return dp[0][1]
 
+'''
+DP with Tabulation with Space Optimization 
+'''
+class Solution:
+    def maxProfit(self, prices: list[int]) -> int:
+        dp = [-1,-1]
+        l = len(prices)
+        dp[0] = 0
+        dp[1] = 0
+        curr = [0,0]
+        profit = float('-inf')
+        for i in range(l-1,-1,-1):
+            for j in range(2):
+                if j == 1:
+                    pur = -prices[i] + dp[0]
+                    not_pur = dp[1]
+                    profit = max(pur, not_pur)
+                else:
+                    sell = prices[i] + dp[1]
+                    not_sell = dp[0]
+                    profit = max(sell, not_sell)
+                curr[j] = profit
+            dp = curr[:]
+        return dp[1]
+
