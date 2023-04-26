@@ -43,3 +43,26 @@ class Solution:
         dp = [ [-1,-1] for _ in range(len(prices)+1)]
         return f(0,1,prices,dp)
 
+'''
+DP with Tabulation
+'''
+class Solution:
+    def maxProfit(self, prices: list[int]) -> int:
+        dp = [ [-1,-1] for _ in range(len(prices)+1)]
+        l = len(prices)
+        dp[l][0] = 0
+        dp[l][1] = 0
+        profit = float('-inf')
+        for i in range(l-1,-1,-1):
+            for j in range(2):
+                if j == 1:
+                    pur = -prices[i] + dp[i+1][0]
+                    not_pur = dp[i+1][1]
+                    profit = max(pur, not_pur)
+                else:
+                    sell = prices[i] + dp[i+1][1]
+                    not_sell = dp[i+1][0]
+                    profit = max(sell, not_sell)
+                dp[i][j] = profit
+        return dp[0][1]
+
