@@ -19,9 +19,18 @@ def jump(n,h,dp):
     return dp[n]
 
     
-def frogJump(n: int, heights: list[int]) -> int:
-    dp = [-1] * (n)
-    jump(n-1,heights,dp)
-    return dp[n-1]
+def frogJump(n: int, heights: List[int]) -> int:
+    prev1 = 0
+    prev2 = 0
+    h = heights
+    for i in range(1,n):
+        take = prev1 + abs(h[i] - h[i-1])
+        not_take = float('inf')
+        if i > 1:
+            not_take = prev2 + abs(h[i] - h[i-2])
+        prev2 = prev1
+        prev1 = min(take,not_take)
+    return prev1
+
     
-    
+
